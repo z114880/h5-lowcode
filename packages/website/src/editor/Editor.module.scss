@@ -1,0 +1,10 @@
+// 防止滚动条影响页面布局
+.editor {
+  box-shadow: 0px 0px 5px #c9c9c9;
+}
+
+.noScrollBar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

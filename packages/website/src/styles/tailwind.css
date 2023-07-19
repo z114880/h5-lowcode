@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .resize-e {
+    cursor: e-resize;
+  }
+
+  .resize-s {
+    cursor: s-resize;
+  }
+
+  .resize-n {
+    cursor: n-resize;
+  }
+
+  .resize-w {
+    cursor: w-resize;
+  }
+
+  .resize-se {
+    cursor: se-resize;
+  }
+  .resize-ew {
+    cursor: ew-resize;
+  }
+  .resize-row {
+    cursor: row-resize;
+  }
+  .resize-col {
+    cursor: col-resize;
+  }
+
+  .content-unset {
+    content: unset;
+  }
+  .overflow-y-overlay {
+    overflow-y: overlay;
+  }
+}

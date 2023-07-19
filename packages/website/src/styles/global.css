@@ -1,0 +1,17 @@
+img {
+  -webkit-user-drag: none;
+}
+
+:root {
+  --contexify-zIndex: 1000;
+  --contexify-menu-minWidth: 120px;
+  --contexify-menu-padding: 0;
+  --contexify-menu-radius: 6px;
+  --contexify-menu-bgColor: #fff;
+  --contexify-menu-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+  --contexify-activeItem-radius: 0;
+  --contexify-activeItem-bgColor: #2788de;
+}
+.contexify {
+  overflow: hidden;
+}

@@ -1,0 +1,201 @@
+{
+  "container": [
+    {
+      "key": "tabLayout",
+      "position": {
+        "position": "relative",
+        "height": 600
+      },
+      "props": {
+        "style": {},
+        "attr": {
+          "headerHeight": 100,
+          "activedBackgroundColor": "",
+          "deactivedBackgroundColor": ""
+        }
+      },
+      "event": { "disable": true },
+      "blocks": [
+        {
+          "key": "tabHeader",
+          "blocks": [
+            {
+              "key": "tabHeaderItem",
+              "position": {
+                "width": 150
+              },
+              "props": {
+                "style": {},
+                "attr": {}
+              },
+              "event": { "disable": true },
+              "animation": { "disable": true },
+              "blocks": [
+                {
+                  "key": "tabHeaderItemActive",
+                  "position": {},
+                  "props": {
+                    "style": {},
+                    "attr": {}
+                  },
+                  "event": { "disable": true },
+                  "animation": { "disable": true },
+                  "blocks": []
+                },
+                {
+                  "key": "tabHeaderItemDeActive",
+                  "position": {},
+                  "props": {
+                    "style": {},
+                    "attr": {}
+                  },
+                  "event": { "disable": true },
+                  "animation": { "disable": true },
+                  "blocks": []
+                }
+              ]
+            },
+            {
+              "key": "tabHeaderItem",
+              "position": {
+                "width": 150
+              },
+              "props": {
+                "style": {},
+                "attr": {}
+              },
+              "event": { "disable": true },
+              "animation": { "disable": true },
+              "blocks": [
+                {
+                  "key": "tabHeaderItemActive",
+                  "position": {},
+                  "props": {
+                    "style": {},
+                    "attr": {}
+                  },
+                  "event": { "disable": true },
+                  "animation": { "disable": true },
+                  "blocks": []
+                },
+                {
+                  "key": "tabHeaderItemDeActive",
+                  "position": {},
+                  "props": {
+                    "style": {},
+                    "attr": {}
+                  },
+                  "event": { "disable": true },
+                  "animation": { "disable": true },
+                  "blocks": []
+                }
+              ]
+            },
+            {
+              "key": "tabHeaderItem",
+              "position": {
+                "width": 150
+              },
+              "props": {
+                "style": {},
+                "attr": {}
+              },
+              "event": { "disable": true },
+              "animation": { "disable": true },
+              "blocks": [
+                {
+                  "key": "tabHeaderItemActive",
+                  "position": {},
+                  "props": {
+                    "style": {},
+                    "attr": {}
+                  },
+                  "event": { "disable": true },
+                  "animation": { "disable": true },
+                  "blocks": []
+                },
+                {
+                  "key": "tabHeaderItemDeActive",
+                  "position": {},
+                  "props": {
+                    "style": {},
+                    "attr": {}
+                  },
+                  "event": { "disable": true },
+                  "animation": { "disable": true },
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "tabContent",
+          "props": {
+            "style": {},
+            "attr": {}
+          },
+          "event": { "disable": true },
+          "animation": { "disable": true },
+          "blocks": [
+            {
+              "key": "baseLayout",
+              "noDelete": true,
+              "position": {
+                "height": 400,
+                "zIndex": 10
+              },
+              "props": {
+                "style": {
+                  "backgroundImage": ""
+                },
+                "attr": {}
+              },
+              "event": { "disable": true },
+              "animation": { "disable": true },
+              "blocks": []
+            },
+            {
+              "key": "baseLayout",
+              "noDelete": true,
+              "position": {
+                "height": 400,
+                "zIndex": 10
+              },
+              "props": {
+                "style": {
+                  "backgroundImage": ""
+                },
+                "attr": {}
+              },
+              "event": { "disable": true },
+              "animation": { "disable": true },
+              "blocks": []
+            },
+            {
+              "key": "baseLayout",
+              "noDelete": true,
+              "position": {
+                "height": 400,
+                "zIndex": 10
+              },
+              "props": {
+                "style": {
+                  "backgroundImage": ""
+                },
+                "attr": {}
+              },
+              "event": { "disable": true },
+              "animation": { "disable": true },
+              "blocks": []
+            }
+          ]
+        }
+      ],
+      "tabAttr": {
+        "active": 1
+      },
+      "animation": { "disable": true }
+    }
+  ]
+}

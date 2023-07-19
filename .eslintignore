@@ -1,0 +1,13 @@
+/logs
+/node_modules
+/dist
+/package-lock.json
+.DS_Store
+postcss.config.cjs
+tailwind.config.cjs
+dist
+webpack.config.js
+*.cjs
+main.js
+material.js
+bottom.js

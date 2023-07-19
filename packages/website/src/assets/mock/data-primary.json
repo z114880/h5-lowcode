@@ -1,0 +1,38 @@
+{
+  "container": {
+    "width": 550,
+    "height": 550
+  },
+  "blocks": [
+    {
+      "position": {
+        "top": 100,
+        "left": 100,
+        "width": 100,
+        "height": 50,
+        "zIndex": 1
+      },
+      "key": "text"
+    },
+    {
+      "position": {
+        "top": 200,
+        "left": 200,
+        "width": 100,
+        "height": 50,
+        "zIndex": 1
+      },
+      "key": "text"
+    },
+    {
+      "position": {
+        "top": 300,
+        "left": 300,
+        "width": 100,
+        "height": 50,
+        "zIndex": 1
+      },
+      "key": "text"
+    }
+  ]
+}

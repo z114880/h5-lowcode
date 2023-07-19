@@ -1,0 +1,29 @@
+{
+  "container": [
+    {
+      "key": "baseLayout",
+      "position": {
+        "position": "relative",
+        "height": 600
+      },
+      "props": {
+        "style": {
+          "backgroundImage": "",
+          "backgroundColor": "",
+          "paddingLeft": 0,
+          "paddingTop": 0,
+          "paddingRight": 0,
+          "paddingBottom": 0,
+          "display": "block",
+          "flexDirection": "",
+          "justifyContent": "",
+          "alignItems": ""
+        },
+        "attr": {}
+      },
+      "event": { "disable": true },
+      "blocks": [],
+      "animation": { "disable": true }
+    }
+  ]
+}

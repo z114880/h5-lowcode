@@ -1,0 +1,34 @@
+.leftSide {
+  :global {
+    .ant-tabs-tabpane {
+      padding-left: 0 !important;
+    }
+    .ant-tabs-content {
+      height: 100% !important;
+    }
+    .ant-tabs-tabpane {
+      height: 100% !important;
+    }
+  }
+  .topTab {
+    :global {
+      .ant-tabs-nav {
+        margin-bottom: 0 !important;
+      }
+      .ant-tabs-tab {
+        border-radius: unset !important;
+        margin-left: 0 !important;
+        width: 202px;
+        border-right: none;
+        border-top: none;
+        border-left: none;
+        display: flex;
+        justify-content: center;
+      }
+      .ant-tabs-tab-active {
+        border-bottom-color: rgba(5, 5, 5, 0.06) !important;
+        background: rgba(255, 255, 255, 0.02) !important;
+      }
+    }
+  }
+}

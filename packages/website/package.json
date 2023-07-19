@@ -1,0 +1,38 @@
+{
+  "name": "@lowcode-packages/website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@lowcode-packages/code-generator": "workspace:^1.0.0",
+    "@lowcode-packages/material": "workspace:^1.0.0",
+    "antd": "^5.1.0",
+    "axios": "^1.2.1",
+    "deepcopy": "^2.1.0",
+    "react": "^18.2.0",
+    "react-contexify": "^6.0.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "classnames": "^2.3.2",
+    "postcss": "^8.4.19",
+    "sass": "^1.56.1",
+    "tailwindcss": "^3.2.3",
+    "vite": "^3.2.3"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

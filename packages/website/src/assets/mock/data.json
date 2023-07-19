@@ -1,0 +1,374 @@
+{
+    "container": [
+        {
+            "key": "baseLayout",
+            "position": {
+                "width": 375,
+                "height": 600
+            },
+            "props": {
+                "style": {
+                    "backgroundImage": ""
+                },
+                "attr": {}
+            },
+            "event": {
+                "disable": true
+            },
+            "animation": {
+                "disable": true
+            },
+            "blocks": [
+                {
+                    "position": {
+                        "top": 183,
+                        "left": 77,
+                        "position": "absolute",
+                        "width": 80,
+                        "height": 40,
+                        "zIndex": 0
+                    },
+                    "props": {
+                        "style": {
+                            "backgroundImage": "url(http://huodong.caixin.com/market/activity/caixintong-5/imgs/%E5%88%87%E5%9B%BE-%E7%A4%BC%E5%93%81%E5%8C%BA.jpg)",
+                            "fontSize": "16",
+                            "color": "#000",
+                            "lineHeight": "18",
+                            "textAlign": "center"
+                        },
+                        "attr": {
+                            "text": "asd"
+                        }
+                    },
+                    "event": {
+                        "action": "openDialog",
+                        "param": "sadf"
+                    },
+                    "animation": {
+                        "animationName": "",
+                        "animationDuration": "5s",
+                        "animationIterationCount": "infinite",
+                        "animationDelay": "0"
+                    },
+                    "key": "button"
+                },
+                {
+                    "position": {
+                        "top": 317,
+                        "left": 73,
+                        "position": "absolute",
+                        "width": 80,
+                        "height": 40,
+                        "zIndex": 0
+                    },
+                    "props": {
+                        "style": {
+                            "fontSize": "20",
+                            "color": "red",
+                            "lineHeight": "18",
+                            "textAlign": "center"
+                        },
+                        "attr": {
+                            "text": "2144"
+                        }
+                    },
+                    "event": {},
+                    "animation": {
+                        "animationName": "",
+                        "animationDuration": "5s",
+                        "animationIterationCount": "infinite",
+                        "animationDelay": "0"
+                    },
+                    "key": "text"
+                },
+                {
+                    "position": {
+                        "top": 434,
+                        "left": 70,
+                        "position": "absolute",
+                        "width": 201,
+                        "height": 40,
+                        "zIndex": 0
+                    },
+                    "props": {
+                        "style": {
+                            "fontSize": "16",
+                            "color": "blue",
+                            "backgroundColor": "rgb(229,229,229)"
+                        },
+                        "attr": {
+                            "placeholder": "请输入2",
+                            "name": "aaa"
+                        }
+                    },
+                    "event": {
+                        "disable": true
+                    },
+                    "animation": {
+                        "disable": true
+                    },
+                    "key": "input"
+                }
+            ]
+        },
+        {
+            "key": "infoDialog",
+            "name": "sadf",
+            "position": {
+                "position": "fixed",
+                "width": 375,
+                "zIndex": 10,
+                "top": 0,
+                "height": "100vh"
+            },
+            "props": {
+                "style": {},
+                "attr": {}
+            },
+            "event": {
+                "disable": true
+            },
+            "animation": {
+                "disable": true
+            },
+            "blocks": [
+                {
+                    "key": "baseLayout",
+                    "noDelete": true,
+                    "position": {
+                        "width": 300,
+                        "height": 400
+                    },
+                    "props": {
+                        "style": {
+                            "backgroundImage": "url(http://huodong.caixin.com/market/activity/caixintong-5/imgs/%E5%88%87%E5%9B%BE-%E7%A4%BC%E5%93%81%E5%8C%BA.jpg)"
+                        },
+                        "attr": {}
+                    },
+                    "event": {
+                        "disable": true
+                    },
+                    "animation": {
+                        "disable": true
+                    },
+                    "blocks": [
+                        {
+                            "key": "infoBox",
+                            "noDelete": true,
+                            "position": {
+                                "position": "absolute",
+                                "width": 204,
+                                "height": 200,
+                                "left": 26,
+                                "top": 90
+                            },
+                            "props": {
+                                "style": {
+                                    "fontSize": 14
+                                },
+                                "attr": {
+                                    "activity-id": 93
+                                }
+                            },
+                            "event": {
+                                "disable": true
+                            },
+                            "animation": {
+                                "disable": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "realGoodsDialog",
+            "name": "asdf",
+            "position": {
+                "position": "fixed",
+                "width": 375,
+                "zIndex": 10,
+                "top": 0,
+                "height": "100vh"
+            },
+            "props": {
+                "style": {},
+                "attr": {}
+            },
+            "event": {
+                "disable": true
+            },
+            "animation": {
+                "disable": true
+            },
+            "blocks": [
+                {
+                    "key": "baseLayout",
+                    "noDelete": true,
+                    "position": {
+                        "width": 300,
+                        "height": 400
+                    },
+                    "props": {
+                        "style": {
+                            "backgroundImage": ""
+                        },
+                        "attr": {}
+                    },
+                    "event": {
+                        "disable": true
+                    },
+                    "animation": {
+                        "disable": true
+                    },
+                    "blocks": [
+                        {
+                            "key": "text",
+                            "noDelete": true,
+                            "position": {
+                                "position": "absolute",
+                                "width": 200,
+                                "height": 40,
+                                "left": 50,
+                                "top": 50
+                            },
+                            "props": {
+                                "style": {
+                                    "fontSize": "20",
+                                    "color": "red",
+                                    "lineHeight": "18",
+                                    "textAlign": "center"
+                                },
+                                "attr": {
+                                    "text": "测试奖品九阳豆浆机"
+                                }
+                            },
+                            "event": {
+                                "disable": true
+                            },
+                            "animation": {
+                                "disable": true
+                            }
+                        },
+                        {
+                            "key": "input",
+                            "position": {
+                                "position": "absolute",
+                                "width": 200,
+                                "height": 40,
+                                "zIndex": 0,
+                                "left": 50,
+                                "top": 100
+                            },
+                            "props": {
+                                "style": {
+                                    "fontSize": "20",
+                                    "color": "red",
+                                    "backgroundColor": "blue"
+                                },
+                                "attr": {
+                                    "placeholder": "请输入2",
+                                    "name": {
+                                        "type": "disabled",
+                                        "value": "name"
+                                    }
+                                }
+                            },
+                            "event": {
+                                "disable": true
+                            },
+                            "animation": {
+                                "disable": true
+                            }
+                        },
+                        {
+                            "key": "input",
+                            "position": {
+                                "position": "absolute",
+                                "width": 200,
+                                "height": 40,
+                                "zIndex": 0,
+                                "left": 50,
+                                "top": 200
+                            },
+                            "props": {
+                                "style": {
+                                    "fontSize": "16",
+                                    "color": "#000",
+                                    "backgroundColor": "rgb(229,229,229)"
+                                },
+                                "attr": {
+                                    "placeholder": "请输入",
+                                    "name": {
+                                        "type": "disabled",
+                                        "value": "telephone"
+                                    }
+                                }
+                            },
+                            "event": {
+                                "disable": true
+                            },
+                            "animation": {
+                                "disable": true
+                            }
+                        },
+                        {
+                            "key": "input",
+                            "position": {
+                                "position": "absolute",
+                                "width": 200,
+                                "height": 40,
+                                "zIndex": 0,
+                                "left": 50,
+                                "top": 150
+                            },
+                            "props": {
+                                "style": {
+                                    "fontSize": "16",
+                                    "color": "#000",
+                                    "backgroundColor": "rgb(229,229,229)"
+                                },
+                                "attr": {
+                                    "placeholder": "请输入",
+                                    "name": {
+                                        "type": "disabled",
+                                        "value": "address"
+                                    }
+                                }
+                            },
+                            "event": {
+                                "disable": true
+                            },
+                            "animation": {
+                                "disable": true
+                            }
+                        },
+                        {
+                            "key": "submitButton",
+                            "position": {
+                                "position": "absolute",
+                                "width": 80,
+                                "height": 40,
+                                "zIndex": 0,
+                                "left": 100,
+                                "top": 300
+                            },
+                            "props": {
+                                "style": {
+                                    "backgroundImage": "url(http://huodong.caixin.com/market/activity/img/活动说明按钮.png)"
+                                },
+                                "attr": {}
+                            },
+                            "event": {
+                                "disable": true
+                            },
+                            "animation": {
+                                "disable": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

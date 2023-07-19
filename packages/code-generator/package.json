@@ -1,0 +1,26 @@
+{
+  "name": "@lowcode-packages/code-generator",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "demo": "npx rollup -c && node bundle.cjs",
+    "build": "npx rollup -c && cp ./src/build-in-code/normalize.css ./dist/ && cp ./src/build-in-code/presets.js ./dist/ && cp ./src/build-in-code/bottom.js ./dist/  && cp -r ./dist/ ../website/public/preview",
+    "test": "cp ./normalize.css ./dist/normalize.txt"
+  },
+  "main": "./main.js",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/file-saver": "^2.0.5",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^10.0.1",
+    "rollup": "^3.10.0",
+    "rollup-plugin-string": "^3.0.0",
+    "tslib": "^2.4.1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@lowcode-packages/material",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npx rollup -c && cp -r ./dist/ ../code-generator/dist/ && cp ./index.css ../code-generator/dist/ && cp ./animation.css ../code-generator/dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.ts",
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-typescript": "^10.0.1",
+    "rollup": "^3.10.0",
+    "rollup-plugin-prettier": "^3.0.0"
+  }
+}

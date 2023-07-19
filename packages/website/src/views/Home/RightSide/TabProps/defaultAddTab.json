@@ -1,0 +1,36 @@
+{
+  "key": "tabHeaderItem",
+  "position": {
+    "width": 150
+  },
+  "props": {
+    "style": {},
+    "attr": {}
+  },
+  "event": { "disable": true },
+  "animation": { "disable": true },
+  "blocks": [
+    {
+      "key": "tabHeaderItemActive",
+      "position": {},
+      "props": {
+        "style": {},
+        "attr": {}
+      },
+      "event": { "disable": true },
+      "animation": { "disable": true },
+      "blocks": []
+    },
+    {
+      "key": "tabHeaderItemDeActive",
+      "position": {},
+      "props": {
+        "style": {},
+        "attr": {}
+      },
+      "event": { "disable": true },
+      "animation": { "disable": true },
+      "blocks": []
+    }
+  ]
+}
