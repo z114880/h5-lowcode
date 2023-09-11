@@ -29,8 +29,6 @@
 
 ```shell
 git clone https://github.com/z114880/h5-lowcode.git
-
-git checkout master
 ```
 
 ```bash

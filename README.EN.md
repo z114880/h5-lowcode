@@ -29,8 +29,6 @@ This React-based low-code platform provides a fast, flexible, and easy-to-use wa
 
 ```shell
 git clone https://github.com/z114880/h5-lowcode.git
-
-git checkout master
 ```
 
 ```bash
