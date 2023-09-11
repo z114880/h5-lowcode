@@ -2,7 +2,6 @@ import styles from './index.module.scss'
 import { FC } from 'react'
 import { Form, Input, Button, message } from 'antd'
 import bg from '@/assets/images/login/bg.png'
-import logo from '@/assets/images/login/logo.png'
 import { useNavigate } from 'react-router-dom'
 
 const Login: FC = () => {
@@ -23,19 +22,18 @@ const Login: FC = () => {
         <img className={styles['left_img']} src={bg} />
         <div className={styles['right_content']}>
           <div className={styles['login_view']}>
-            <img src={logo} className={styles['logo']} />
-            <p className={styles['title']}>H5低代码制作平台</p>
-            <p className="mb-2">账号：admin 密码：123456</p>
+            <p className={styles['title']}>Low-code Platform</p>
+            <p className="mb-2">username: admin &nbsp;&nbsp;&nbsp; password: 123456</p>
             <Form name="basic" className="w-[320px]" onFinish={onFinish} autoComplete="off">
               <Form.Item
-                label="账号"
+                label="username"
                 name="account"
                 rules={[{ required: true, message: '请输入账号!' }]}
               >
                 <Input autoComplete="off" />
               </Form.Item>
               <Form.Item
-                label="密码"
+                label="password"
                 name="password"
                 rules={[
                   { required: true, message: '请输入密码!' },
@@ -46,13 +44,21 @@ const Login: FC = () => {
               </Form.Item>
               <Form.Item className={styles['login-button']}>
                 <Button className="w-[180px] ml-12" type="primary" htmlType="submit">
-                  登录
+                  Login
                 </Button>
               </Form.Item>
             </Form>
           </div>
         </div>
       </div>
+      <a
+        className="absolute bottom-2"
+        href="https://beian.miit.gov.cn/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        京ICP备2023015675号-1
+      </a>
     </div>
   )
 }

@@ -135,6 +135,7 @@ function reducer(state: stateType, action: { type: string; payload: any }) {
     case 'undo':
       const undoLen = state.operationQueue.length
       const undoPointer = state.pointer + 1 > undoLen - 1 ? state.pointer : state.pointer + 1
+      broadCastChannel.postMessage(state.operationQueue[undoLen - undoPointer - 1])
       return {
         ...state,
         pointer: undoPointer,
@@ -143,6 +144,7 @@ function reducer(state: stateType, action: { type: string; payload: any }) {
     case 'redo':
       const redoLen = state.operationQueue.length
       const redoPointer = state.pointer - 1 > -1 ? state.pointer - 1 : state.pointer
+      broadCastChannel.postMessage(state.operationQueue[redoLen - redoPointer - 1])
       return {
         ...state,
         pointer: redoPointer,
