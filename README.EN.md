@@ -81,7 +81,7 @@ npm run build:website for production environment
 ### Contact the Author
 
 - WeChat: Andrew__zhuang
-- Email: z1148803335@qq.com
+- Email: 1148803335@qq.com
 
 ## Browser Support
 

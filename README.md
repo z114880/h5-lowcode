@@ -80,7 +80,7 @@ npm run build:website 用于生产环境
 ### 联系作者
 
 - 微信：Andrew__zhuang
-- 邮箱：z1148803335@qq.com
+- 邮箱：1148803335@qq.com
 
 ## 浏览器支持
 

@@ -10,6 +10,8 @@ import '@lowcode-packages/material/index.css'
 import '@lowcode-packages/material/animation.css'
 import axios from 'axios'
 import { message } from 'antd'
+import './i18n'
+
 message.config({
   top: 80,
   duration: 1,
@@ -17,6 +19,7 @@ message.config({
 })
 window.axios = axios
 window.enableClick = true
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter basename="/">

@@ -10,7 +10,8 @@ import {
   DownSquareOutlined,
   UploadOutlined,
   DownloadOutlined,
-  CodeOutlined
+  CodeOutlined,
+  GlobalOutlined
 } from '@ant-design/icons'
 import useHandleDelete from '@/editor/hooks/useHandleDelete'
 import useHandleZIndex from '@/editor/hooks/useHandleZIndex'
@@ -34,6 +35,7 @@ import { pageConfigType } from '@/editor/types'
 import { useNavigate } from 'react-router-dom'
 import { uploadApi } from '@/apis'
 import Album from './Album'
+import { useTranslation } from 'react-i18next'
 
 const { TextArea } = Input
 const Header: FC = () => {
@@ -205,6 +207,19 @@ const Header: FC = () => {
     setIsOpenAlbum(false)
   }, [])
 
+  const { t, i18n } = useTranslation()
+
+  const i18nMenuItems: MenuProps['items'] = [
+    {
+      label: <div onClick={() => i18n.changeLanguage('en')}>English</div>,
+      key: 'en'
+    },
+    {
+      label: <div onClick={() => i18n.changeLanguage('zh')}>中文</div>,
+      key: 'zh'
+    }
+  ]
+
   return (
     <header className="h-[80px] flex bg-white drop-shadow justify-between">
       <Modal open={open} onOk={handleOk} onCancel={handleCancel} closable={false}>
@@ -283,19 +298,16 @@ const Header: FC = () => {
             <ButtonItem icon={<CloudServerOutlined />} name="部署" />
           </>
         </Popconfirm>
-        {
-          qrCode && (
-            <Popover
-              overlayInnerStyle={{ padding: 0 }}
-              content={<QRCode value={qrCode} bordered={false} />}
-            >
-              <div className="cursor-pointer">
-                <QRCode value={qrCode} size={76} />
-              </div>
-            </Popover>
-          )
-          // <QRCode value={qrCode} size={76} />
-        }
+        {qrCode && (
+          <Popover
+            overlayInnerStyle={{ padding: 0 }}
+            content={<QRCode value={qrCode} bordered={false} />}
+          >
+            <div className="cursor-pointer">
+              <QRCode value={qrCode} size={76} />
+            </div>
+          </Popover>
+        )}
         {qrCode && (
           <Button type="primary" onClick={copyLink}>
             复制链接
@@ -304,7 +316,7 @@ const Header: FC = () => {
 
         <div className="flex items-center">
           <Button type="primary" onClick={onSettingOpen}>
-            页面设置
+            {t('header.setting')}
           </Button>
         </div>
         <div className="flex items-center">
@@ -316,6 +328,11 @@ const Header: FC = () => {
       </div>
 
       <div className="flex h-full items-center mr-10 pl-4 pr-4">
+        <Dropdown menu={{ items: i18nMenuItems }} placement="bottom" arrow>
+          <div className="h-8 cursor-pointer pl-2 pr-2 rounded-md mr-2">
+            <GlobalOutlined />
+          </div>
+        </Dropdown>
         <Dropdown menu={{ items }} placement="bottom" arrow>
           <div className="flex items-center cursor-pointer hover:bg-gray-100 p-2 rounded-md">
             <Avatar src={<img src={getAvatar()} alt="avatar" />} />
