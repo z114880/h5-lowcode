@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const drawButton: componentItem = {
-  label: '抽奖按钮',
+  label: 'lotteryButton',
   key: 'drawButton',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="抽奖按钮" name="drawButton" />
+    <MaterialItem borderB={borderB} icon={buttonIcon} label="lotteryButton" name="drawButton" />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-drawbutton style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-drawbutton>

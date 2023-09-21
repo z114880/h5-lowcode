@@ -2,11 +2,11 @@ import { containerType, pageConfigType } from '../../../../types/Schema'
 import { jsx2css, dialogReg, getAttrValue, layoutReg, getRandomString } from '../utils/index'
 import BlockBuilder from './blockBuilder'
 export default class ContainerBuilder {
-  options: { cssMode: 'inline' | 'class'; config: pageConfigType }
+  options: { config: pageConfigType }
   Block: BlockBuilder
-  constructor(options: { cssMode: 'inline' | 'class'; config: pageConfigType }) {
+  constructor(options: { config: pageConfigType }) {
     this.options = options
-    this.Block = new BlockBuilder(options)
+    this.Block = new BlockBuilder()
   }
   private getCss = (container: containerType) => {
     if (container) {
@@ -14,16 +14,9 @@ export default class ContainerBuilder {
         ...container.props.style,
         ...container.position
       })
-      if (this.options.cssMode === 'inline') {
-        return {
-          attr: `style="${css}"`,
-          cssStr: ''
-        }
-      } else {
-        const name = getRandomString(6)
-        const cssStr = `.${name} {${css}}`
-        return { attr: `class="${name}"`, cssStr }
-      }
+      const name = getRandomString(6)
+      const cssStr = `.${name} {${css}}`
+      return { attr: `class="${name}"`, cssStr }
     }
     return { attr: '', cssStr: '' }
   }

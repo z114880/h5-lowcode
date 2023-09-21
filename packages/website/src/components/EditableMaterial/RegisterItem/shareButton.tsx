@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const shareButton: componentItem = {
-  label: 'App分享按钮',
+  label: 'shareButton',
   key: 'shareButton',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="App分享按钮" name="shareButton" />
+    <MaterialItem borderB={borderB} icon={buttonIcon} label="shareButton" name="shareButton" />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-sharebutton style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-sharebutton>

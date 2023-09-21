@@ -4,6 +4,7 @@ import TabProps from './TabProps'
 import TabAnimation from './TabAnimation'
 import { getBlockElementByIndexes } from '@/editor/utils/tools'
 import { SchemaContext } from '@/utils/context'
+import { useTranslation } from 'react-i18next'
 
 const RightSide: FC = () => {
   const { state, dispatch } = useContext(SchemaContext)
@@ -45,14 +46,16 @@ const RightSide: FC = () => {
     return key
   }
 
+  const { t } = useTranslation()
+
   const items = [
     {
-      label: `属性`,
+      label: t('rightPannel.attribute'),
       key: '1',
       children: <TabProps size={size} key={reRenderKey()} />
     },
     {
-      label: `动画`,
+      label: t('rightPannel.animation'),
       key: '2',
       children: <TabAnimation key={reRenderKey()} />
     }

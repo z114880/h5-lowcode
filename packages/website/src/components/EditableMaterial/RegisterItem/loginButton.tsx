@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx } from '@/utils/tools'
 
 const loginButton: componentItem = {
-  label: '登录按钮',
+  label: 'loginButton',
   key: 'loginButton',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="登录按钮" name="loginButton" />
+    <MaterialItem borderB={borderB} icon={buttonIcon} label="loginButton" name="loginButton" />
   ),
   editor: (style: Record<string, any>) => (
     <mat-loginbutton style={mapJsxPx(style)}></mat-loginbutton>

@@ -56,7 +56,8 @@ function copyToClipBoard(text) {
   }
 }
 const openLoading = () => {
-  const element = createElementFromHTML(`<div class="loadingWrap" id="PageLoading">
+  const element = createElementFromHTML(`
+    <div class="loadingWrap" id="PageLoading">
       <div class="loadEffect">
         <span></span>
         <span></span>
@@ -67,7 +68,95 @@ const openLoading = () => {
         <span></span>
         <span></span>
       </div>
-    </div>`)
+      <style>
+        .loadingWrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          top: 0;
+          z-index: 9999;
+        }
+        .loadEffect {
+          width: 100px;
+          height: 100px;
+          position: relative;
+          transform: scale(0.5);
+        }
+        .loadEffect span {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: white;
+          position: absolute;
+          animation: load 1.04s ease infinite;
+        }
+        @keyframes load {
+          0% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0.2;
+          }
+        }
+        .loadEffect span:nth-child(1) {
+          left: 1px;
+          top: 50%;
+          margin-top: -8px;
+          animation-delay: 0.13s;
+        }
+
+        .loadEffect span:nth-child(2) {
+          left: 14px;
+          top: 14px;
+          animation-delay: 0.26s;
+        }
+
+        .loadEffect span:nth-child(3) {
+          left: 50%;
+          top: 4px;
+          margin-left: -8px;
+          animation-delay: 0.39s;
+        }
+
+        .loadEffect span:nth-child(4) {
+          top: 14px;
+          right: 14px;
+          animation-delay: 0.52s;
+        }
+
+        .loadEffect span:nth-child(5) {
+          right: 1px;
+          top: 50%;
+          margin-top: -8px;
+          animation-delay: 0.65s;
+        }
+
+        .loadEffect span:nth-child(6) {
+          right: 14px;
+          bottom: 14px;
+          animation-delay: 0.78s;
+        }
+
+        .loadEffect span:nth-child(7) {
+          bottom: 4px;
+          left: 50%;
+          margin-left: -8px;
+          animation-delay: 0.91s;
+        }
+
+        .loadEffect span:nth-child(8) {
+          bottom: 14px;
+          left: 14px;
+          animation-delay: 1.04s;
+        }
+      </style>
+    </div>
+    `)
   document.body.appendChild(element)
 }
 const closeLoading = () => {

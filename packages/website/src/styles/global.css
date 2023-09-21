@@ -15,3 +15,7 @@ img {
 .contexify {
   overflow: hidden;
 }
+
+#root {
+  min-width: 1440px;
+}

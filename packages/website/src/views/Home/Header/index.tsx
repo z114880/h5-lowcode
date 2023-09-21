@@ -267,35 +267,54 @@ const Header: FC = () => {
         </Form>
       </Modal>
       <div className="w-[1000px] ml-[400px] pr-4 flex items-center justify-between">
-        <ButtonItem actived={enableUndo} event={undo} icon={<UndoOutlined />} name="撤销" />
-        <ButtonItem actived={enableRedo} event={redo} icon={<RedoOutlined />} name="恢复" />
-        <ButtonItem actived={isActive} event={onDelete} icon={<DeleteOutlined />} name="删除" />
+        <ButtonItem
+          actived={enableUndo}
+          event={undo}
+          icon={<UndoOutlined />}
+          name={t('header.undo')}
+        />
+        <ButtonItem
+          actived={enableRedo}
+          event={redo}
+          icon={<RedoOutlined />}
+          name={t('header.redo')}
+        />
+        <ButtonItem
+          actived={isActive}
+          event={onDelete}
+          icon={<DeleteOutlined />}
+          name={t('header.delete')}
+        />
         <ButtonItem
           actived={isActiveOnZIndex}
           event={onAddZIndex}
           icon={<UpSquareOutlined />}
-          name="上移一层"
+          name={t('header.increaseZIndex')}
         />
         <ButtonItem
           actived={isActiveOnZIndex}
           event={onMinusZIndex}
           icon={<DownSquareOutlined />}
-          name="下移一层"
+          name={t('header.decreaseZIndex')}
         />
-        <ButtonItem icon={<UploadOutlined />} event={onExportSchema} name="导出JSON" />
-        <ButtonItem icon={<DownloadOutlined />} event={onOpen} name="导入JSON" />
-        <ButtonItem event={onDownload} icon={<CodeOutlined />} name="下载代码" />
-        <ButtonItem event={onPreview} icon={<MobileOutlined />} name="预览" />
+        <ButtonItem
+          icon={<UploadOutlined />}
+          event={onExportSchema}
+          name={t('header.exportJson')}
+        />
+        <ButtonItem icon={<DownloadOutlined />} event={onOpen} name={t('header.importJson')} />
+        <ButtonItem event={onDownload} icon={<CodeOutlined />} name={t('header.downloadProject')} />
+        <ButtonItem event={onPreview} icon={<MobileOutlined />} name={t('header.preview')} />
         <Popconfirm
           placement="bottom"
-          title="确定要部署吗？"
-          description="此操作会覆盖当前线上项目"
+          title={t('header.makeSureDeploy')}
+          description={t('header.overwriteProductionProject')}
           onConfirm={deployEvent}
-          okText="是"
-          cancelText="否"
+          okText={t('header.yes')}
+          cancelText={t('header.no')}
         >
           <>
-            <ButtonItem icon={<CloudServerOutlined />} name="部署" />
+            <ButtonItem icon={<CloudServerOutlined />} name={t('header.deploy')} />
           </>
         </Popconfirm>
         {qrCode && (
@@ -310,7 +329,7 @@ const Header: FC = () => {
         )}
         {qrCode && (
           <Button type="primary" onClick={copyLink}>
-            复制链接
+            {t('header.copyLink')}
           </Button>
         )}
 
@@ -322,7 +341,7 @@ const Header: FC = () => {
         <div className="flex items-center">
           <Album isOpen={isOpenAlbum} closeAlbum={closeAlbum} />
           <Button type="primary" onClick={openAlbum}>
-            图片库
+            {t('header.album')}
           </Button>
         </div>
       </div>

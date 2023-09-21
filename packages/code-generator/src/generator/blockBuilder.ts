@@ -1,10 +1,7 @@
 import { animationType, blockType, eventType } from '../../../../types/Schema'
 import { jsx2css, getAttrValue, getRandomString } from '../utils/index'
 export default class BlockBuilder {
-  options: { cssMode: 'inline' | 'class' }
-  constructor(options: { cssMode: 'inline' | 'class' }) {
-    this.options = options
-  }
+  constructor() {}
   private getEventFunc = (event: eventType) => {
     if (!event.action) return null
     if (event.disable) return null
@@ -25,6 +22,7 @@ export default class BlockBuilder {
         if (block.animation.animationName) {
           animation = { ...block.animation }
           delete animation.keyframes
+          delete animation.triggerMode
         }
         if (block.animation.animationName === '自定义动效') {
           animation.animationName = randomKeyframsName
@@ -46,16 +44,9 @@ export default class BlockBuilder {
         ...block.position,
         ...animation
       })
-      if (this.options.cssMode === 'inline') {
-        return {
-          attr: `style="${css}"`,
-          cssStr: `${keyframesStr}`
-        }
-      } else {
-        const name = getRandomString(6)
-        const cssStr = `${keyframesStr}\n .${name} {${css}}`
-        return { attr: `class="${name}"`, cssStr }
-      }
+      const name = getRandomString(6)
+      const cssStr = `${keyframesStr}\n .${name} {${css}}`
+      return { attr: `class="${name}"`, cssStr }
     }
     return { attr: '', cssStr: '' }
   }

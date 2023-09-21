@@ -4,13 +4,13 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const copyCouponButton: componentItem = {
-  label: '复制券码按钮',
+  label: 'copyCouponButton',
   key: 'copyCouponButton',
   icon: (borderB?: boolean) => (
     <MaterialItem
       borderB={borderB}
       icon={buttonIcon}
-      label="复制券码按钮"
+      label="copyCouponButton"
       name="copyCouponButton"
     />
   ),

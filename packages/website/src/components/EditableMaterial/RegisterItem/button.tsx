@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const button: componentItem = {
-  label: '按钮',
+  label: 'button',
   key: 'button',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="按钮" name="button" />
+    <MaterialItem borderB={borderB} icon={buttonIcon} label="button" name="button" />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-button style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-button>
@@ -46,7 +46,9 @@ const button: componentItem = {
     animationName: '',
     animationDuration: '2s',
     animationIterationCount: 'infinite',
-    animationDelay: '0'
+    animationDelay: '0',
+    animationFillMode: 'none',
+    triggerMode: 'default'
   }
 }
 

@@ -4,10 +4,10 @@ import tabLayoutIcon from '@/assets/images/materialIcon/tabLayout.svg'
 import { componentItem } from '../index'
 
 const tabLayout: componentItem = {
-  label: 'Tab容器',
+  label: 'tabLayout',
   key: 'tabLayout',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={tabLayoutIcon} label="Tab容器" name="tabLayout" />
+    <MaterialItem borderB={borderB} icon={tabLayoutIcon} label="tabLayout" name="tabLayout" />
   ),
   editor: (containerIndex: number) => (
     <TabLayout blockIndex={[]} containerIndex={containerIndex} key={containerIndex} bottom={true} />

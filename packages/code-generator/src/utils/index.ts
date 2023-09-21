@@ -17,7 +17,13 @@ export function isRegNumber(text: string) {
 }
 
 export function addRem(text: string, item: string) {
-  if (isRegNumber(text) && item !== 'zIndex' && item !== 'animationDelay' && item !== 'opacity') {
+  if (
+    isRegNumber(text) &&
+    item !== 'zIndex' &&
+    item !== 'animationDelay' &&
+    item !== 'animationIterationCount' &&
+    item !== 'opacity'
+  ) {
     return (Number(text) / 37.5).toFixed(4) + 'rem'
   }
   return text

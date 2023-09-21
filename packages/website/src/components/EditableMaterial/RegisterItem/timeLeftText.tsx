@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const timeLeftText: componentItem = {
-  label: '剩余抽奖次数',
+  label: 'timeLeft',
   key: 'timeLeftText',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={textIcon} label="剩余抽奖次数" name="timeLeftText" />
+    <MaterialItem borderB={borderB} icon={textIcon} label="timeLeft" name="timeLeftText" />
   ),
   editor: (style: Record<string, any>, attr) => (
     <mat-timelefttext name={getAttrValue(attr['name'])} style={mapJsxPx(style)}></mat-timelefttext>

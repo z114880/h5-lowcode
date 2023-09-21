@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const image: componentItem = {
-  label: '图片',
+  label: 'image',
   key: 'image',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={imageIcon} label="图片" name="image" />
+    <MaterialItem borderB={borderB} icon={imageIcon} label="image" name="image" />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-image style={mapJsxPx(style)} src={getAttrValue(attr['src'])}></mat-image>

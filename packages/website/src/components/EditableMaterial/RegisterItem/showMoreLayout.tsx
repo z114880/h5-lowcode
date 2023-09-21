@@ -4,13 +4,13 @@ import baseLayoutIcon from '@/assets/images/materialIcon/baseLayout.svg'
 import { componentItem } from '../index'
 
 const showMoreLayout: componentItem = {
-  label: '显示更多容器',
+  label: 'showMoreContainer',
   key: 'showMoreLayout',
   icon: (borderB?: boolean) => (
     <MaterialItem
       borderB={borderB}
       icon={baseLayoutIcon}
-      label="显示更多容器"
+      label="showMoreContainer"
       name="showMoreLayout"
     />
   ),

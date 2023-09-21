@@ -4,14 +4,13 @@ import { SchemaContext } from '@/utils/context'
 import { getBlockElementByIndexes } from '@/editor/utils/tools'
 import ChooseAnimation from './ChooseAnimation'
 import deepcopy from 'deepcopy'
-import animationMap from '@/editor/utils/animationMap'
 import { CloseOutlined } from '@ant-design/icons'
 import { keyframesType } from '@/editor/types'
-
+import { useTranslation } from 'react-i18next'
 const TabAnimation: FC = () => {
   const { state, dispatch } = useContext(SchemaContext)
   const { focusing, schema } = state
-
+  const { t, i18n } = useTranslation()
   const getFocusEle = () => {
     if (focusing) {
       if (focusing.blockIndex.length > 0) {
@@ -47,6 +46,13 @@ const TabAnimation: FC = () => {
   const [timingFunction, setTimingFunction] = useState<string>(
     element?.animation?.animationTimingFunction ? element.animation.animationTimingFunction : 'ease'
   )
+  const [fillMode, setFillMode] = useState<string>(
+    element?.animation?.animationFillMode ? element.animation.animationFillMode : 'none'
+  )
+  const [triggerMode, setTriggerMode] = useState<string>(
+    element?.animation?.triggerMode ? element.animation.triggerMode : 'default'
+  )
+
   const [disableCount, setDiableCount] = useState(
     typeof element?.animation?.animationIterationCount === 'string'
   )
@@ -78,6 +84,7 @@ const TabAnimation: FC = () => {
   }, [focusing])
   const onSetCurrentAnimate = useCallback((name: string) => {
     return () => {
+      setKeyframeChecked(false)
       setCurrentAnimate(name)
     }
   }, [])
@@ -122,6 +129,8 @@ const TabAnimation: FC = () => {
       newElement.animation.animationIterationCount = iterationCount
       newElement.animation.animationDelay = delay + 's'
       newElement.animation.animationTimingFunction = timingFunction ? timingFunction : 'ease'
+      newElement.animation.animationFillMode = fillMode ? fillMode : 'ease'
+      newElement.animation.triggerMode = triggerMode ? triggerMode : 'ease'
       newElement.animation.keyframes = keyframes
 
       dispatch({
@@ -148,11 +157,11 @@ const TabAnimation: FC = () => {
   const keyframeEffectOptions = [
     {
       value: 'opacity',
-      label: '透明度'
+      label: t('css.opacity')
     },
     {
       value: 'backgroundColor',
-      label: '背景颜色'
+      label: t('css.backgroundColor')
     },
     {
       value: 'transform',
@@ -161,6 +170,36 @@ const TabAnimation: FC = () => {
     {
       value: 'transformOrigin',
       label: 'transformOrigin'
+    }
+  ]
+
+  const animationFillModeOptions = [
+    {
+      value: 'none',
+      label: 'none'
+    },
+    {
+      value: 'both',
+      label: 'both'
+    },
+    {
+      value: 'backwards',
+      label: 'backwards'
+    },
+    {
+      value: 'forwards',
+      label: 'forwards'
+    }
+  ]
+
+  const triggerModeOptions = [
+    {
+      value: 'default',
+      label: '默认'
+    },
+    {
+      value: 'click',
+      label: '点击'
     }
   ]
 
@@ -276,6 +315,12 @@ const TabAnimation: FC = () => {
       setKeyframeChecked(false)
     }
   }
+  const onChangeFillMode = (value: string) => {
+    setFillMode(value)
+  }
+  const onChangeTriggerMode = (value: string) => {
+    setTriggerMode(value)
+  }
   return (
     <>
       {element ? (
@@ -293,9 +338,7 @@ const TabAnimation: FC = () => {
                       onMouseLeave={onLeave}
                       className="w-24 h-10 p-2 relative rounded text-center overflow-hidden flex items-center leading-tight justify-center bg-[#1677ff] hover:bg-[rgb(30,140,250)] text-white transition duration-300 cursor-pointer break-all"
                     >
-                      {animationMap[currentAnimate as keyof typeof animationMap]
-                        ? animationMap[currentAnimate as keyof typeof animationMap]
-                        : currentAnimate}
+                      {currentAnimate}
                       <div
                         onClick={onDeleteAnimate}
                         className="w-3 h-3 absolute flex justify-center items-center right-1 top-1"
@@ -332,6 +375,7 @@ const TabAnimation: FC = () => {
                       <div className="flex justify-between items-center mb-2">
                         <span>新增属性：</span>
                         <Select
+                          key={i18n.resolvedLanguage}
                           style={{ width: 160 }}
                           onSelect={onChangeSelect(index)}
                           options={filterOptions(Object.keys(value.effectProperties))}
@@ -341,7 +385,9 @@ const TabAnimation: FC = () => {
                       {Object.entries(value.effectProperties).map((val, ind) => {
                         return (
                           <div key={ind} className="flex justify-between items-center mb-2">
-                            <span>{val[0]}:</span>
+                            <span>
+                              {i18n.exists('css.' + val[0]) ? t('css.' + val[0]) : val[0]}:
+                            </span>
                             <Input
                               className="w-[160px]"
                               value={val[1]}
@@ -417,6 +463,26 @@ const TabAnimation: FC = () => {
                     onChange={onChangeSwitch}
                   />
                 </div>
+                <div className="block mb-4">
+                  <div>AnimationFillMode:</div>
+                  <Select
+                    key={i18n.resolvedLanguage}
+                    style={{ width: 160 }}
+                    onSelect={onChangeFillMode}
+                    options={animationFillModeOptions}
+                    defaultValue={fillMode}
+                  />
+                </div>
+                <div className="block mb-4">
+                  <div>触发方式:</div>
+                  <Select
+                    key={i18n.resolvedLanguage}
+                    style={{ width: 160 }}
+                    onSelect={onChangeTriggerMode}
+                    options={triggerModeOptions}
+                    defaultValue={triggerMode}
+                  />
+                </div>
                 <Button type="primary" disabled={!focusing} onClick={handleSubmit}>
                   保存
                 </Button>
@@ -425,7 +491,7 @@ const TabAnimation: FC = () => {
           )}
         </div>
       ) : (
-        <div>无选中元素</div>
+        <div>{t('rightPannel.noChoosenElement')}</div>
       )}
     </>
   )

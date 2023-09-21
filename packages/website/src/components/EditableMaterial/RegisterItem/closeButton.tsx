@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const closeButton: componentItem = {
-  label: '关闭弹窗按钮',
+  label: 'closeButton',
   key: 'closeButton',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="关闭弹窗按钮" name="closeButton" />
+    <MaterialItem borderB={borderB} icon={buttonIcon} label="closeButton" name="closeButton" />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-closebutton style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-closebutton>

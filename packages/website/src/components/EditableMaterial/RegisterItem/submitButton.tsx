@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const submitButton: componentItem = {
-  label: '提交实物奖品按钮',
+  label: 'submitButton',
   key: 'submitButton',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="按钮" name="button" />
+    <MaterialItem borderB={borderB} icon={buttonIcon} label="submitButton" name="button" />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-submitbutton style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-submitbutton>

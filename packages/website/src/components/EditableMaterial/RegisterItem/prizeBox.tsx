@@ -2,7 +2,7 @@ import { componentItem } from '../index'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const prizeBox: componentItem = {
-  label: '我的奖品',
+  label: 'prizeBox',
   key: 'prizeBox',
   icon: () => <></>,
   editor: (style, attr) => {

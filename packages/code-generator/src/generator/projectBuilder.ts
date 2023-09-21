@@ -85,11 +85,11 @@ const prettierConfig = {
 } as Options
 export default class ProjectBuilder {
   Container: ContainerBuilder
-  options: { cssMode: 'inline' | 'class'; config: pageConfigType }
+  options: { config: pageConfigType }
   template: string
   Chunks: any[]
   CssStr: string
-  constructor(Schema: any, options: { cssMode: 'inline' | 'class'; config: pageConfigType }) {
+  constructor(Schema: any, options: { config: pageConfigType }) {
     this.Container = new ContainerBuilder(options)
     this.Chunks = []
     this.CssStr = ''

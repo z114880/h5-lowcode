@@ -7,10 +7,9 @@ import { getAttrValue, dialogReg, isRegNumber } from '@/utils/tools'
 import { getKeyElementByBlocks } from '@/editor/utils/tools'
 import { registerConfig } from '@/components/EditableMaterial'
 import { MaterialItemsKeys } from '@/editor/types'
-import eventMap from '@/editor/utils/eventMap'
-import attributeMap from '@/editor/utils/attributeMap'
-import cssOption from './cssOption'
+import getCssOption from './cssOption'
 import TabLayoutProps from './TabLayoutProps'
+import { useTranslation } from 'react-i18next'
 
 type optionType = {
   label: string
@@ -26,6 +25,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
 ) => {
   const { state, dispatch } = useContext(SchemaContext)
   const { focusing, schema } = state
+  const { t, i18n } = useTranslation()
 
   const getFocusEle = () => {
     if (focusing) {
@@ -192,10 +192,13 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
         element.event.action = action
         element.event.param = param
       }
+
       if (size.width) element.position.width = Number(size.width) || size.width
       if (size.height) element.position.height = Number(size.height) || size.height
-      if (size.left) element.position.left = Number(size.left) || 0
-      if (size.top) element.position.top = Number(size.top) || 0
+      if (size.left && element.props.style.position === 'absolute')
+        element.position.left = Number(size.left) || 0
+      if (size.top && element.props.style.position === 'absolute')
+        element.position.top = Number(size.top) || 0
       if (element.blocks && getKeyElementByBlocks('tabHeader', element.blocks)) {
         getKeyElementByBlocks('tabHeader', element.blocks)!.position.height =
           tabPropsRef.current!.fetchTabAttr().newHeaderHeight
@@ -269,10 +272,10 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
       return (
         <Select
           defaultValue={val[1]}
-          key={val[0]}
+          key={val[0] + i18n.resolvedLanguage}
           style={{ width: 220 }}
           onSelect={onSelectStyle(val[0])}
-          options={cssOption[val[0]]}
+          options={getCssOption(val[0], t)}
         />
       )
     } else if (val[0] === 'backgroundImage') {
@@ -284,6 +287,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
   const tabPropsRef = useRef<{ fetchTabAttr: BaseFunction }>()
   const relativeCss = ['marginLeft', 'marginRight', 'marginTop', 'marginBottom']
   const flexCss = ['flexDirection', 'justifyContent', 'alignItems']
+
   return (
     <div>
       <Modal
@@ -300,26 +304,26 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
         bodyStyle={{ height: '150px' }}
       >
         <div className="mb-4">
-          <div>选择事件：</div>
+          <div>{t('rightPannel.chooseAction')}</div>
           <Select
             style={{ width: 220 }}
             onChange={handleChangeAction}
             options={[
               {
                 value: 'openDialog',
-                label: '打开弹窗'
+                label: t('rightPannel.openDialog')
               },
               {
                 value: 'openLink',
-                label: '跳转链接'
+                label: t('rightPannel.openLink')
               },
               {
                 value: 'backTop',
-                label: '回到顶部'
+                label: t('rightPannel.backTop')
               },
               {
                 value: 'none',
-                label: '无'
+                label: t('rightPannel.none')
               }
             ]}
           />
@@ -327,7 +331,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
 
         {modalAction === 'openDialog' && (
           <div className="mb-4">
-            <div>弹窗名称：</div>
+            <div>{t('rightPannel.modalName')}</div>
             <Select
               style={{ width: 220 }}
               onChange={handleChangeParam}
@@ -337,7 +341,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
         )}
         {modalAction === 'openLink' && (
           <div className="mb-4">
-            <div>链接地址：</div>
+            <div>{t('rightPannel.Url')}</div>
             <Input onChange={onChangeParam} />
           </div>
         )}
@@ -346,36 +350,38 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
         element ? (
           <div>
             <div className="mb-2">
-              组件名称：
-              {registerConfig.componentMap[element.key as MaterialItemsKeys].label}
+              {t('rightPannel.name')}:&nbsp;
+              {t(
+                'leftPannel.' + registerConfig.componentMap[element.key as MaterialItemsKeys].label
+              )}
             </div>
             {element.tabAttr && <TabLayoutProps ref={tabPropsRef} />}
             <div
               className="mb-2"
               style={{ display: size.width || size.width === '' ? 'block' : 'none' }}
             >
-              宽度:
+              <div>{t('attribute.width')}:</div>
               <Input name="width" onChange={onChangeWidth} value={size.width || ''} />
             </div>
             <div
               className="mb-2"
               style={{ display: size.height || size.height === '' ? 'block' : 'none' }}
             >
-              高度:
+              <div>{t('attribute.height')}:</div>
               <Input name="height" onChange={onChageHeight} value={size.height || ''} />
             </div>
             <div
               className="mb-2"
               style={{ display: size.left || size.left === '' ? 'block' : 'none' }}
             >
-              X:
+              <div>{t('attribute.X')}:</div>
               <Input name="left" onChange={onChangeLeft} value={size.left || ''} />
             </div>
             <div
               className="mb-2"
               style={{ display: size.top || size.top === '' ? 'block' : 'none' }}
             >
-              Y:
+              <div>{t('attribute.Y')}:</div>
               <Input name="top" onChange={onChangeTop} value={size.top || ''} />
             </div>
 
@@ -392,7 +398,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
                         : 'block'
                   }}
                 >
-                  <div>{attributeMap[val[0]] ? attributeMap[val[0]] : val[0]}:</div>
+                  <div>{i18n.exists('css.' + val[0]) ? t('css.' + val[0]) : val[0]}:</div>
                   {getCssSelector(val)}
                 </div>
               )
@@ -400,7 +406,9 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
             {Object.entries(attrObj).map((val: Record<string, any>, ind: number) => {
               return (
                 <div key={ind} className="block mb-4">
-                  <div>{attributeMap[val[0]] ? attributeMap[val[0]] : val[0]}:</div>
+                  <div>
+                    {i18n.exists('attribute.' + val[0]) ? t('attribute.' + val[0]) : val[0]}:
+                  </div>
                   {getAttrSelector(val)}
                 </div>
               )
@@ -409,20 +417,20 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
               <>
                 <div className="mb-4 break-all">
                   <span>
-                    交互：
+                    {t('rightPannel.action')}:
                     <>
                       {action && action !== 'none' && param !== 'none' ? (
                         <>
-                          {eventMap[action]}
-                          {param ? '-' + param : ''}
+                          {t('rightPannel.' + action)}
+                          {param ? ' - ' + param : ''}
                         </>
                       ) : (
-                        <>无</>
+                        <>{t('rightPannel.none')}</>
                       )}
                     </>
                   </span>
                   <Button className="ml-5" type="primary" size="small" onClick={onChooseEvent}>
-                    设置交互
+                    {t('rightPannel.setAction')}
                   </Button>
                 </div>
               </>
@@ -434,15 +442,15 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
             size.left &&
             size.top &&
             element.event.disable ? (
-              <div>无可编辑属性</div>
+              <div>{t('rightPannel.noEditableAttribute')}</div>
             ) : (
               <Button type="primary" onClick={onSubmit}>
-                保存
+                {t('rightPannel.save')}
               </Button>
             )}
           </div>
         ) : (
-          <div>无选中元素</div>
+          <div>{t('rightPannel.noChoosenElement')}</div>
         )
       ) : (
         <div></div>

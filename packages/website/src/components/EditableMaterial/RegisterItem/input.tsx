@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const input: componentItem = {
-  label: '输入框',
+  label: 'input',
   key: 'input',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={inputIcon} label="输入框" name="input" />
+    <MaterialItem borderB={borderB} icon={inputIcon} label="input" name="input" />
   ),
   editor: (style: Record<string, any>, attr) => (
     <mat-input

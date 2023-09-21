@@ -4,10 +4,10 @@ import baseLayoutIcon from '@/assets/images/materialIcon/baseLayout.svg'
 import { componentItem } from '../index'
 
 const blockLayout: componentItem = {
-  label: '块级容器',
+  label: 'blockLayout',
   key: 'blockLayout',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={baseLayoutIcon} label="块级容器" name="blockLayout" />
+    <MaterialItem borderB={borderB} icon={baseLayoutIcon} label="blockLayout" name="blockLayout" />
   ),
   editor: (containerIndex: number, blockIndex: number[], key: number) => (
     <BlockLayout
@@ -44,7 +44,12 @@ const blockLayout: componentItem = {
     attr: {}
   },
   event: { disable: true },
-  animation: { disable: true },
+  animation: {
+    animationName: '',
+    animationDuration: '2s',
+    animationIterationCount: 'infinite',
+    animationDelay: '0'
+  },
   blocks: []
 }
 

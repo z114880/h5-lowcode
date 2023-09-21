@@ -4,10 +4,15 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const exchangeButton: componentItem = {
-  label: '积分兑换按钮',
+  label: 'exchangeButton',
   key: 'exchangeButton',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={buttonIcon} label="积分兑换按钮" name="exchangeButton" />
+    <MaterialItem
+      borderB={borderB}
+      icon={buttonIcon}
+      label="exchangeButton"
+      name="exchangeButton"
+    />
   ),
   editor: (style: Record<string, any>, attr: Record<string, any>) => (
     <mat-exchangebutton style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-exchangebutton>

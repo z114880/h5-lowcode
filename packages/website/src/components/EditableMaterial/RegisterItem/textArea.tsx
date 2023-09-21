@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const input: componentItem = {
-  label: '输入框',
+  label: 'textarea',
   key: 'textArea',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={inputIcon} label="多行输入框" name="textArea" />
+    <MaterialItem borderB={borderB} icon={inputIcon} label="textarea" name="textArea" />
   ),
   editor: (style: Record<string, any>, attr) => (
     <mat-textarea

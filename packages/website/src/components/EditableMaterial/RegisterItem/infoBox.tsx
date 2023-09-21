@@ -2,7 +2,7 @@ import { componentItem } from '../index'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const infoBox: componentItem = {
-  label: '活动说明',
+  label: 'infoBox',
   key: 'infoBox',
   icon: () => <></>,
   editor: (style, attr) => {

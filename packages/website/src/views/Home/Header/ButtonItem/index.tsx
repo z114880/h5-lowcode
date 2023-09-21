@@ -14,7 +14,7 @@ const ButtonItem: FC<PropsType> = (props) => {
     <div
       onClick={actived ? event : undefined}
       className={classNames(
-        'h-26 flex flex-col justify-center items-center cursor-pointer',
+        'h-26 max-w-[50px] flex flex-col justify-center items-center cursor-pointer',
         actived ? 'text-current' : 'text-gray-400'
       )}
     >

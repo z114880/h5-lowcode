@@ -4,10 +4,10 @@ import MaterialItem from '../MaterialItem'
 import { mapJsxPx, getAttrValue } from '@/utils/tools'
 
 const text: componentItem = {
-  label: '文本',
+  label: 'text',
   key: 'text',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={textIcon} label="文本" name="text" />
+    <MaterialItem borderB={borderB} icon={textIcon} label="text" name="text" />
   ),
   editor: (style: Record<string, any>, attr) => (
     <mat-text style={mapJsxPx(style)}>{getAttrValue(attr['text'])}</mat-text>

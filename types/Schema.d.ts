@@ -60,6 +60,8 @@ export type animationType = {
   animationDuration?: string
   animationIterationCount?: number | string
   animationDelay?: string
+  animationFillMode?: string
+  triggerMode?: string
   keyframes?: keyframesType
 }
 

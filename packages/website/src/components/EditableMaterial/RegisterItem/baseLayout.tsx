@@ -4,10 +4,10 @@ import baseLayoutIcon from '@/assets/images/materialIcon/baseLayout.svg'
 import { componentItem } from '../index'
 
 const baseLayout: componentItem = {
-  label: '基础容器',
+  label: 'baseLayout',
   key: 'baseLayout',
   icon: (borderB?: boolean) => (
-    <MaterialItem borderB={borderB} icon={baseLayoutIcon} label="基础容器" name="baseLayout" />
+    <MaterialItem borderB={borderB} icon={baseLayoutIcon} label="baseLayout" name="baseLayout" />
   ),
   editor: (containerIndex: number) => (
     <BaseLayout
