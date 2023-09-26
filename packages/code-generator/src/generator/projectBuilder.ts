@@ -240,10 +240,10 @@ export default class ProjectBuilder {
   }
   public createChunk(Schema: schemaType) {
     for (let i = 0; i < Schema.container.length; i++) {
-      const buildContainer = this.Container.builid(Schema.container[i])
-      this.Chunks.push(buildContainer?.element)
-      this.CssStr += buildContainer?.css
+      const containerChunk = this.Container.builid(Schema.container[i])
+      this.Chunks.push(containerChunk)
     }
+    this.CssStr += this.Container.cssStr
   }
   public addBody() {
     let str = ''
@@ -253,12 +253,24 @@ export default class ProjectBuilder {
     return str
   }
 
+  public buildBottomStr() {
+    let bottomStr = ''
+    console.log(this.Container.animationArr, 'aaa')
+    this.Container.animationArr.forEach((obj) => {
+      if (obj.triggerMode === 'default') {
+        bottomStr += `defaultTrigger('${obj.className}','${obj.animationClassName}');\n`
+      } else if (obj.triggerMode === 'click') {
+        bottomStr += `clickTrigger('${obj.className}','${obj.animationClassName}');\n`
+      }
+    })
+    return bottomStr
+  }
+
   compressZip() {
     const zip = new JSZip()
     zip.file('normalize.css', normalizeCss)
     zip.file('animation.css', animationCss)
     zip.file('presets.js', presetsJs)
-    zip.file('bottom.js', bottomJs)
     const materialFolder = zip.folder('material')
     materialFolder?.file('BaseLayout.js', BaseLayout)
     materialFolder?.file('BlockLayout.js', BlockLayout)
@@ -306,6 +318,7 @@ export default class ProjectBuilder {
     const zip = this.compressZip()
     zip.file('index.html', htmlTemplate)
     zip.file('index.css', cssTemplate)
+    zip.file('bottom.js', bottomJs + this.buildBottomStr())
     zip.generateAsync({ type: 'blob' }).then((content) => {
       FileSaver.saveAs(content, `${this.options.config.projectName || '代码'}.zip`)
     })

@@ -12,7 +12,7 @@ var animationCss = "@keyframes bounce {\n  from,\n  20%,\n  53%,\n  to {\n    tr
 
 var presetsJs = "/* eslint-disable no-undef */\n/* eslint-disable @typescript-eslint/no-unused-vars */\n/* eslint-disable no-unused-vars */\nwindow.isInGenerated = true\nwindow.isInProduction = window.location.hostname === 'www.funet.top'\n\nconst openDialog = (name) => {\n  document.getElementsByName(name)[0].setAttribute('show', true)\n}\n\nconst openLink = (link) => {\n  window.location.href = link\n}\n\nconst backTop = () => {\n  document.body.scrollIntoView({ behavior: 'smooth' })\n}\n\nfunction cxLoginSuccess() {\n  window.location.reload()\n}\nfunction cxLogoutSuccess() {\n  window.location.reload()\n}\n";
 
-var bottomJs = ";(function () {\n  const shareTitle = document.getElementById('wx_shareTitle')\n  const shareMessage = document.getElementById('wx_shareMessage')\n  const shareLogo = document.getElementById('wx_shareLogo')\n  const shareLink = window.location.href\n  wx.ready(function () {\n    wx.onMenuShareTimeline({\n      title: shareTitle, // 分享标题\n      link: shareLink, // 分享链接\n      imgUrl: shareLogo, // 分享图标\n      success: function () {\n        // 用户确认分享后执行的回调函数\n      },\n      cancel: function () {\n        // 用户取消分享后执行的回调函数\n      }\n    })\n    wx.onMenuShareAppMessage({\n      title: shareTitle, // 分享标题\n      desc: shareMessage, // 分享描述\n      link: shareLink, // 分享链接\n      imgUrl: shareLogo, // 分享图标\n      type: '', // 分享类型,music、video或link，不填默认为link\n      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空\n      success: function () {\n        // 用户确认分享后执行的回调函数\n      },\n      cancel: function () {\n        // 用户取消分享后执行的回调函数\n      }\n    })\n    wx.onMenuShareQQ({\n      title: shareTitle, // 分享标题\n      desc: shareMessage, // 分享描述\n      link: shareLink, // 分享链接\n      imgUrl: shareLogo, // 分享图标\n      success: function () {\n        // 用户确认分享后执行的回调函数\n      },\n      cancel: function () {\n        // 用户取消分享后执行的回调函数\n      }\n    })\n    wx.onMenuShareWeibo({\n      title: shareTitle, // 分享标题\n      desc: shareMessage, // 分享描述\n      link: shareLink, // 分享链接\n      imgUrl: shareLogo, // 分享图标\n      success: function () {\n        // 用户确认分享后执行的回调函数\n      },\n      cancel: function () {\n        // 用户取消分享后执行的回调函数\n      }\n    })\n  })\n})()\n";
+var bottomJs = ";(function () {\n  const shareTitle = document.getElementById('wx_shareTitle')\n  const shareMessage = document.getElementById('wx_shareMessage')\n  const shareLogo = document.getElementById('wx_shareLogo')\n  const shareLink = window.location.href\n  if(window.wx){\n    wx.ready(function () {\n      wx.onMenuShareTimeline({\n        title: shareTitle, // 分享标题\n        link: shareLink, // 分享链接\n        imgUrl: shareLogo, // 分享图标\n        success: function () {\n          // 用户确认分享后执行的回调函数\n        },\n        cancel: function () {\n          // 用户取消分享后执行的回调函数\n        }\n      })\n      wx.onMenuShareAppMessage({\n        title: shareTitle, // 分享标题\n        desc: shareMessage, // 分享描述\n        link: shareLink, // 分享链接\n        imgUrl: shareLogo, // 分享图标\n        type: '', // 分享类型,music、video或link，不填默认为link\n        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空\n        success: function () {\n          // 用户确认分享后执行的回调函数\n        },\n        cancel: function () {\n          // 用户取消分享后执行的回调函数\n        }\n      })\n      wx.onMenuShareQQ({\n        title: shareTitle, // 分享标题\n        desc: shareMessage, // 分享描述\n        link: shareLink, // 分享链接\n        imgUrl: shareLogo, // 分享图标\n        success: function () {\n          // 用户确认分享后执行的回调函数\n        },\n        cancel: function () {\n          // 用户取消分享后执行的回调函数\n        }\n      })\n      wx.onMenuShareWeibo({\n        title: shareTitle, // 分享标题\n        desc: shareMessage, // 分享描述\n        link: shareLink, // 分享链接\n        imgUrl: shareLogo, // 分享图标\n        success: function () {\n          // 用户确认分享后执行的回调函数\n        },\n        cancel: function () {\n          // 用户取消分享后执行的回调函数\n        }\n      })\n    })\n  }\n})()\n\nfunction defaultTrigger(className, animationClassName) {\n  document.getElementsByClassName(className)[0].classList.add(animationClassName)\n}\n\nfunction clickTrigger(className, animationClassName) {\n  const element = document.getElementsByClassName(className)[0]\n  element.addEventListener('click', () => {\n    element.classList.add(animationClassName)\n  })\n}\n\n";
 
 var apis = "import { useToast } from './tools.js'\n\nconst prefix = 'https://www.funet.top'\n//我的奖品\nasync function getPrizeList(activityId) {\n  return (\n    await axios.get(`${prefix}/api/lottery/getPrizeList`, {\n      params: {\n        activitesId: activityId,\n        userId: 'USER_UID'\n      }\n    })\n  ).data\n}\n//活动信息\nasync function getActivityInfo(activityId) {\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      resolve({\n        activityRules: '活动规则1111111'\n      })\n    }, 600)\n  })\n}\n//点击抽奖\nasync function drawLottery(activityId) {\n  return (\n    await axios.get(`${prefix}/api/lottery/drawLottery`, {\n      activitesId: activityId,\n      userId: 'USER_UID',\n      code: 'USER_LOGIN_CODE',\n      unit: 'USER_UNIT',\n      deviceType: 'USER_DEVICE_TYPE'\n    })\n  ).data\n}\n//提交实物奖品\nasync function commitUserInfo(data) {\n  const { activityId, id, name, telephone, address } = data\n  console.log(activityId, id, name, telephone, address)\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      resolve({ code: 0, msg: 'success', data: '' })\n    }, 600)\n  })\n}\n//获取抽奖次数\nasync function getTimes(activityId) {\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      resolve(10)\n    }, 600)\n  })\n}\nasync function updateTimes(name, activityId) {\n  if (activityId) {\n    const timeData = await getTimes()\n    const times = timeData\n    document\n      .getElementsByName(name)[0]\n      .shadowRoot.querySelector('.container').innerHTML = `剩余抽奖次数：${times}`\n  } else {\n    useToast('无活动ID')\n  }\n}\n//赠送抽奖次数\nasync function rewardTimes(activitesId, type) {\n  return new Promise((resolve) => {\n    setTimeout(() => {\n      resolve('success')\n    }, 600)\n  })\n}\n\nexport {\n  commitUserInfo,\n  drawLottery,\n  getActivityInfo,\n  getPrizeList,\n  getTimes,\n  rewardTimes,\n  updateTimes\n}\n";
 
@@ -156,7 +156,12 @@ function getRandomString(len) {
 }
 
 class BlockBuilder {
-    constructor() { }
+    animationArr;
+    cssStr;
+    constructor() {
+        this.animationArr = [];
+        this.cssStr = '';
+    }
     getEventFunc = (event) => {
         if (!event.action)
             return null;
@@ -179,6 +184,7 @@ class BlockBuilder {
                 if (block.animation.animationName) {
                     animation = { ...block.animation };
                     delete animation.keyframes;
+                    delete animation.triggerMode;
                 }
                 if (block.animation.animationName === '自定义动效') {
                     animation.animationName = randomKeyframsName;
@@ -195,24 +201,32 @@ class BlockBuilder {
             }
             const css = jsx2css({
                 ...block.props.style,
-                ...block.position,
-                ...animation
+                ...block.position
             });
             const name = getRandomString(6);
-            const cssStr = `${keyframesStr}\n .${name} {${css}}`;
-            return { attr: `class="${name}"`, cssStr };
+            this.cssStr += `.${name} {${css}}`;
+            if (block.animation.animationName) {
+                const animationClassName = getRandomString(6);
+                this.animationArr.push({
+                    className: name,
+                    animationClassName,
+                    triggerMode: block.animation.triggerMode || 'default'
+                });
+                const animationCss = jsx2css({ ...animation });
+                this.cssStr += `${keyframesStr}\n .${animationClassName} {${animationCss}}`;
+            }
+            return `class="${name}"`;
         }
-        return { attr: '', cssStr: '' };
+        return '';
     };
     getSlotStr = () => {
         return `slot="content"`;
     };
     getChildrenStr = (block) => {
         if (block.blocks) {
-            const buildElement = this.build(block.blocks);
-            return { element: buildElement.blockStr, css: buildElement.cssStr };
+            return this.build(block.blocks);
         }
-        return { element: '', css: '' };
+        return '';
     };
     getAttrTextStr = (block) => {
         if (getAttrValue(block.props.attr['text'])) {
@@ -246,39 +260,35 @@ class BlockBuilder {
             block.key === 'tabContent' ||
             block.key === 'tabHeaderItemActive' ||
             block.key === 'tabHeaderItemDeActive') {
-            const CssObj = this.getCss(block);
+            const cssStr = this.getCss(block);
             const ChildrenStr = this.getChildrenStr(block);
-            return {
-                element: `\n<${this.getblockTag(block)} ${CssObj.attr} ${this.getAttrsStr(block)} ${this.getEventStr(event)} ${this.getSlotStr()}>${ChildrenStr.element.trim() && ChildrenStr.element + '\n'}</${this.getblockTag(block)}>`,
-                css: CssObj.cssStr + ChildrenStr.css
-            };
+            return `\n<${this.getblockTag(block)} ${cssStr} ${this.getAttrsStr(block)} ${this.getEventStr(event)} ${this.getSlotStr()}>${ChildrenStr.trim() && ChildrenStr + '\n'}</${this.getblockTag(block)}>`;
         }
         else {
-            const CssObj = this.getCss(block);
-            return {
-                element: `\n<${this.getblockTag(block)} ${CssObj.attr} ${this.getEventStr(event)} ${this.getAttrsStr(block)} ${this.getSlotStr()}>${this.getAttrTextStr(block)}</${this.getblockTag(block)}>`,
-                css: CssObj.cssStr
-            };
+            const cssStr = this.getCss(block);
+            return `\n<${this.getblockTag(block)} ${cssStr} ${this.getEventStr(event)} ${this.getAttrsStr(block)} ${this.getSlotStr()}>${this.getAttrTextStr(block)}</${this.getblockTag(block)}>`;
         }
     };
     build(blocks) {
         let blockStr = '';
-        let cssStr = '';
         for (let i = 0; i < blocks.length; i++) {
             const blockItem = this.getBlockItem(blocks[i]);
-            blockStr += blockItem.element;
-            cssStr += blockItem.css;
+            blockStr += blockItem;
         }
-        return { blockStr, cssStr };
+        return blockStr;
     }
 }
 
 class ContainerBuilder {
     options;
     Block;
+    animationArr;
+    cssStr;
     constructor(options) {
         this.options = options;
         this.Block = new BlockBuilder();
+        this.animationArr = [];
+        this.cssStr = '';
     }
     getCss = (container) => {
         if (container) {
@@ -287,10 +297,10 @@ class ContainerBuilder {
                 ...container.position
             });
             const name = getRandomString(6);
-            const cssStr = `.${name} {${css}}`;
-            return { attr: `class="${name}"`, cssStr };
+            this.cssStr += `.${name} {${css}}`;
+            return `class="${name}"`;
         }
-        return { attr: '', cssStr: '' };
+        return '';
     };
     getAttrsStr = (container) => {
         let attrStr = '';
@@ -312,19 +322,15 @@ class ContainerBuilder {
     };
     builid(container) {
         const BlockItem = this.Block.build(container.blocks);
+        this.cssStr += this.Block.cssStr;
+        this.animationArr = this.Block.animationArr;
         if (layoutReg.test(container.key)) {
-            const CssObj = this.getCss(container);
-            return {
-                element: `\n<${this.getContainerTag(container)} ${this.getAttrsStr(container)} ${CssObj.attr}>${BlockItem.blockStr.trim() && BlockItem.blockStr + '\n'}</${this.getContainerTag(container)}>`,
-                css: CssObj.cssStr + BlockItem.cssStr
-            };
+            const containerClass = this.getCss(container);
+            return `\n<${this.getContainerTag(container)} ${this.getAttrsStr(container)} ${containerClass}>${BlockItem.trim() && BlockItem + '\n'}</${this.getContainerTag(container)}>`;
         }
         else if (dialogReg.test(container.key)) {
-            const CssObj = this.getCss(container);
-            return {
-                element: `\n<mat-dialog ${CssObj.attr} show="false" style="display:none;" name="${container.name}" >${BlockItem.blockStr}\n</mat-dialog>`,
-                css: CssObj.cssStr + BlockItem.cssStr
-            };
+            const dialogClass = this.getCss(container);
+            return `\n<mat-dialog ${dialogClass} show="false" style="display:none;" name="${container.name}" >${BlockItem}\n</mat-dialog>`;
         }
     }
 }
@@ -439,10 +445,10 @@ class ProjectBuilder {
     }
     createChunk(Schema) {
         for (let i = 0; i < Schema.container.length; i++) {
-            const buildContainer = this.Container.builid(Schema.container[i]);
-            this.Chunks.push(buildContainer?.element);
-            this.CssStr += buildContainer?.css;
+            const containerChunk = this.Container.builid(Schema.container[i]);
+            this.Chunks.push(containerChunk);
         }
+        this.CssStr += this.Container.cssStr;
     }
     addBody() {
         let str = '';
@@ -451,12 +457,24 @@ class ProjectBuilder {
         }
         return str;
     }
+    buildBottomStr() {
+        let bottomStr = '';
+        console.log(this.Container.animationArr, 'aaa');
+        this.Container.animationArr.forEach((obj) => {
+            if (obj.triggerMode === 'default') {
+                bottomStr += `defaultTrigger('${obj.className}','${obj.animationClassName}');\n`;
+            }
+            else if (obj.triggerMode === 'click') {
+                bottomStr += `clickTrigger('${obj.className}','${obj.animationClassName}');\n`;
+            }
+        });
+        return bottomStr;
+    }
     compressZip() {
         const zip = new JSZip();
         zip.file('normalize.css', normalizeCss);
         zip.file('animation.css', animationCss);
         zip.file('presets.js', presetsJs);
-        zip.file('bottom.js', bottomJs);
         const materialFolder = zip.folder('material');
         materialFolder?.file('BaseLayout.js', BaseLayout);
         materialFolder?.file('BlockLayout.js', BlockLayout);
@@ -503,6 +521,7 @@ class ProjectBuilder {
         const zip = this.compressZip();
         zip.file('index.html', htmlTemplate);
         zip.file('index.css', cssTemplate);
+        zip.file('bottom.js', bottomJs + this.buildBottomStr());
         zip.generateAsync({ type: 'blob' }).then((content) => {
             FileSaver.saveAs(content, `${this.options.config.projectName || '代码'}.zip`);
         });
@@ -533,7 +552,7 @@ const generate = (schema, config) => {
 };
 const preview = (schema, config) => {
     const Project = new ProjectBuilder(schema, { config });
-    return { body: Project.addBody(), style: Project.CssStr };
+    return { body: Project.addBody(), style: Project.CssStr, bottom: Project.buildBottomStr() };
 };
 const deploy = (schema, config) => {
     if (!schema)

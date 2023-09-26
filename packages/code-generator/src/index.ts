@@ -9,7 +9,7 @@ const generate = (schema: schemaType, config: pageConfigType) => {
 }
 const preview = (schema: schemaType, config: pageConfigType) => {
   const Project = new ProjectBuilder(schema, { config })
-  return { body: Project.addBody(), style: Project.CssStr }
+  return { body: Project.addBody(), style: Project.CssStr, bottom: Project.buildBottomStr() }
 }
 const deploy = (schema: schemaType, config: pageConfigType) => {
   if (!schema) throw new Error('please input schema')

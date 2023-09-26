@@ -4,9 +4,13 @@ import BlockBuilder from './blockBuilder'
 export default class ContainerBuilder {
   options: { config: pageConfigType }
   Block: BlockBuilder
+  animationArr: { className: string; animationClassName: string; triggerMode: string }[]
+  cssStr: string
   constructor(options: { config: pageConfigType }) {
     this.options = options
     this.Block = new BlockBuilder()
+    this.animationArr = []
+    this.cssStr = ''
   }
   private getCss = (container: containerType) => {
     if (container) {
@@ -15,10 +19,10 @@ export default class ContainerBuilder {
         ...container.position
       })
       const name = getRandomString(6)
-      const cssStr = `.${name} {${css}}`
-      return { attr: `class="${name}"`, cssStr }
+      this.cssStr += `.${name} {${css}}`
+      return `class="${name}"`
     }
-    return { attr: '', cssStr: '' }
+    return ''
   }
   private getAttrsStr = (container: containerType) => {
     let attrStr = ''
@@ -42,22 +46,18 @@ export default class ContainerBuilder {
   }
   public builid(container: containerType) {
     const BlockItem = this.Block.build(container.blocks)
+    this.cssStr += this.Block.cssStr
+    this.animationArr = this.Block.animationArr
     if (layoutReg.test(container.key)) {
-      const CssObj = this.getCss(container)
-      return {
-        element: `\n<${this.getContainerTag(container)} ${this.getAttrsStr(container)} ${
-          CssObj.attr
-        }>${BlockItem.blockStr.trim() && BlockItem.blockStr + '\n'}</${this.getContainerTag(
-          container
-        )}>`,
-        css: CssObj.cssStr + BlockItem.cssStr
-      }
+      const containerClass = this.getCss(container)
+      return `\n<${this.getContainerTag(container)} ${this.getAttrsStr(
+        container
+      )} ${containerClass}>${BlockItem.trim() && BlockItem + '\n'}</${this.getContainerTag(
+        container
+      )}>`
     } else if (dialogReg.test(container.key)) {
-      const CssObj = this.getCss(container)
-      return {
-        element: `\n<mat-dialog ${CssObj.attr} show="false" style="display:none;" name="${container.name}" >${BlockItem.blockStr}\n</mat-dialog>`,
-        css: CssObj.cssStr + BlockItem.cssStr
-      }
+      const dialogClass = this.getCss(container)
+      return `\n<mat-dialog ${dialogClass} show="false" style="display:none;" name="${container.name}" >${BlockItem}\n</mat-dialog>`
     }
   }
 }
