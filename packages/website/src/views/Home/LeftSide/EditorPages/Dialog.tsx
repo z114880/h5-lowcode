@@ -9,10 +9,11 @@ import { registerConfig } from '@/components/EditableMaterial'
 import { MaterialItemsKeys } from '@/editor/types'
 import { dialogReg } from '@/utils/tools'
 import { deleteElementByIndexes } from '@/editor/utils/tools'
+import { useTranslation } from 'react-i18next'
 
 const EditorPages: FC = () => {
   const { state, dispatch } = useContext(SchemaContext)
-
+  const { t } = useTranslation()
   const [open, setOpen] = useState<boolean>(false)
   const [form] = useForm()
 
@@ -90,9 +91,14 @@ const EditorPages: FC = () => {
   return (
     <div className="h-[160px] overflow-y-scroll">
       <Button onClick={handleOpenDialog} className="mt-2 mb-2 ml-2 ml-6" type="primary">
-        +&nbsp;创建弹窗
+        +&nbsp;{t('leftPannel.createModal')}
       </Button>
-      <Modal title="新增弹窗" open={open} onOk={handleOk} onCancel={handleCancel}>
+      <Modal
+        title={t('leftPannel.createModal')}
+        open={open}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
         <Form
           name="basic"
           labelCol={{ span: 6 }}
@@ -103,11 +109,11 @@ const EditorPages: FC = () => {
         >
           <Form.Item
             name="dialogType"
-            label="弹窗类型"
-            rules={[{ required: true, message: '请选择弹窗类型!' }]}
+            label={t('leftPannel.modalType')}
+            rules={[{ required: true, message: t('leftPannel.chooseModalType') }]}
           >
             <Select>
-              <Select.Option value="dialog">自定义弹窗</Select.Option>
+              <Select.Option value="dialog">{t('leftPannel.customizedModal')}</Select.Option>
               <Select.Option value="infoDialog">活动说明弹窗</Select.Option>
               <Select.Option value="virtualGoodsDialog">虚拟物品中奖弹窗</Select.Option>
               <Select.Option value="realGoodsDialog">实物物品中奖弹窗</Select.Option>
@@ -116,11 +122,11 @@ const EditorPages: FC = () => {
           </Form.Item>
           <Form.Item
             name="dialogName"
-            label="弹窗名称"
+            label={t('leftPannel.modalName')}
             rules={[
               {
                 required: true,
-                message: '请输入弹窗名称!'
+                message: t('leftPannel.inputModalName')
               },
               () => ({
                 validator(_, value) {
@@ -134,7 +140,7 @@ const EditorPages: FC = () => {
                   if (value && !dialogs.includes(value)) {
                     return Promise.resolve()
                   }
-                  return Promise.reject(new Error('弹窗名称须是唯一值!'))
+                  return Promise.reject(new Error(t('leftPannel.uniqueModalName')))
                 }
               })
             ]}

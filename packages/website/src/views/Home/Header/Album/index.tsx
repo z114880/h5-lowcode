@@ -6,7 +6,7 @@ import { getPhotoListApi } from '@/apis'
 import classnames from 'classnames'
 import { getBaseUrl } from '@/utils/tools'
 import { deBounce } from '@/utils/tools'
-
+import { useTranslation } from 'react-i18next'
 import styles from './index.module.scss'
 type propsType = {
   isOpen: boolean
@@ -18,7 +18,7 @@ const Album: FC<propsType> = (props) => {
   const { pageConfig } = state
   const [photoList, setPhotoList] = useState<Array<any>>([])
   const deBounceList = deBounce(getPhotoListApi, 1000)
-
+  const { t } = useTranslation()
   const uploadProps: UploadProps = {
     name: 'file',
     action: getBaseUrl() + '/file/save',
@@ -55,10 +55,10 @@ const Album: FC<propsType> = (props) => {
       try {
         //clipboard Api只能在https或者localhost中调用
         await navigator.clipboard.writeText(str)
-        message.success('已拷贝至剪切板')
+        message.success(t('header.copiedToClipboard'))
       } catch (e) {
         console.log(e)
-        message.error('只能在https或者localhost中调用')
+        message.error(t('header.httpsLocalhostOnly'))
       }
     }
   }
@@ -82,7 +82,7 @@ const Album: FC<propsType> = (props) => {
           'https://www.funet.top/pages/' + pageConfig.projectName + '/img/' + fileName
         )}
       >
-        复制
+        {t('header.copy')}
       </Button>
     </div>
   )
@@ -103,7 +103,7 @@ const Album: FC<propsType> = (props) => {
         <div className="w-[160px] h-[510px] flex flex-col">
           <Upload {...uploadProps}>
             <Button className="w-[120px]" type="primary">
-              上传图片
+              {t('header.uploadImage')}
             </Button>
           </Upload>
         </div>

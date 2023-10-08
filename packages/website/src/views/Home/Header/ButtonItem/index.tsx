@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { FC, memo } from 'react'
-
+import { useTranslation } from 'react-i18next'
 type PropsType = {
   name: string
   icon: JSX.Element
@@ -10,9 +10,13 @@ type PropsType = {
 
 const ButtonItem: FC<PropsType> = (props) => {
   const { name, icon, event, actived } = props
+  const { t } = useTranslation()
+  const transEvent = () => {
+    event!(t)
+  }
   return (
     <div
-      onClick={actived ? event : undefined}
+      onClick={actived ? transEvent : undefined}
       className={classNames(
         'h-26 max-w-[50px] flex flex-col justify-center items-center cursor-pointer',
         actived ? 'text-current' : 'text-gray-400'

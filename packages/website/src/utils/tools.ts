@@ -33,7 +33,13 @@ export function isRegNumber(text: string) {
   return isNumber.test(text)
 }
 export function addPx(text: string, item: string) {
-  if (isRegNumber(text) && item !== 'zIndex' && item !== 'animationDelay' && item !== 'opacity') {
+  if (
+    isRegNumber(text) &&
+    item !== 'zIndex' &&
+    item !== 'animationDelay' &&
+    item !== 'animationIterationCount' &&
+    item !== 'opacity'
+  ) {
     return text + 'px'
   }
   return text

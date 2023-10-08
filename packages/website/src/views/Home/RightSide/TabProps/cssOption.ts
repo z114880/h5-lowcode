@@ -1,8 +1,8 @@
 export default (key: string, t: BaseFunction): Record<string, any>[] => {
   const options = {
     fontWeight: [
-      { label: '正常', value: 'normal' },
-      { label: '粗体', value: 'bold' }
+      { label: t('fontWeight.normal'), value: 'normal' },
+      { label: t('fontWeight.bold'), value: 'bold' }
     ],
     textAlign: [
       { label: t('textAlign.left'), value: 'left' },
@@ -11,13 +11,13 @@ export default (key: string, t: BaseFunction): Record<string, any>[] => {
       { label: t('textAlign.justify'), value: 'justify' }
     ],
     textDecoration: [
-      { label: '无', value: 'none' },
-      { label: '中划线', value: 'line-through' },
-      { label: '下划线', value: 'underline' }
+      { label: t('textDecoration.none'), value: 'none' },
+      { label: t('textDecoration.line-through'), value: 'line-through' },
+      { label: t('textDecoration.underline'), value: 'underline' }
     ],
     position: [
-      { label: '相对定位', value: 'relative' },
-      { label: '绝对定位', value: 'absolute' }
+      { label: t('position.relative'), value: 'relative' },
+      { label: t('position.absolute'), value: 'absolute' }
     ],
     display: [
       { label: 'block', value: 'block' },

@@ -17,6 +17,9 @@ export function isRegNumber(text: string) {
 }
 
 export function addRem(text: string, item: string) {
+  if (text === '0') {
+    return ''
+  }
   if (
     isRegNumber(text) &&
     item !== 'zIndex' &&

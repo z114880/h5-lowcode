@@ -48,13 +48,13 @@ const useHandleDelete = (
   }, [isActive, schema, focusing])
 
   const onDeleteWithoutFocusing = useCallback(
-    (containerIndex?: number, blockIndex?: number[]) => {
+    (t: BaseFunction, containerIndex?: number, blockIndex?: number[]) => {
       const newSchema = deepcopy(schema)
       let deletedSchema
       if (containerIndex !== undefined && blockIndex !== undefined) {
         const element = getBlockElementByIndexes(schema, containerIndex!, blockIndex!)
         if (element.noDelete) {
-          message.warning('无法删除此元素')
+          message.warning(t('toast.canNotDeleteElement'))
           return
         }
         deletedSchema = deleteElementByIndexes(newSchema, containerIndex, blockIndex)

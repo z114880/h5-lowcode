@@ -141,13 +141,13 @@ const TabAnimation: FC = () => {
         type: 'pushQueue',
         payload: newSchema
       })
-      message.success('成功')
+      message.success(t('rightPannel.success'))
     }
   }
   const onDeleteAnimate = () => {
     setCurrentAnimate(null)
     onLeave()
-    if (currentAnimate === '自定义动效') {
+    if (currentAnimate === 'keyframes') {
       setKeyframeChecked(false)
     }
   }
@@ -195,11 +195,11 @@ const TabAnimation: FC = () => {
   const triggerModeOptions = [
     {
       value: 'default',
-      label: '默认'
+      label: t('rightPannel.default')
     },
     {
       value: 'click',
-      label: '点击'
+      label: t('rightPannel.click')
     }
   ]
 
@@ -234,12 +234,12 @@ const TabAnimation: FC = () => {
   const addStep = (percentNum: string) => {
     const percentNumReg = /^(0|[1-9][0-9]{0,1}|100)%$/
     if (!percentNumReg.test(percentNum)) {
-      message.warning('请输入一个百分比正整数')
+      message.warning(t('rightPannel.percentageNumber'))
       return
     }
     for (let i = 0; i < keyframes.steps.length; i++) {
       if (keyframes.steps[i].percentNum === percentNum) {
-        message.warning('关键帧重复')
+        message.warning(t('rightPannel.keyframeRepeated'))
         return
       }
     }
@@ -304,11 +304,11 @@ const TabAnimation: FC = () => {
     }
   }
   const [keyframeChecked, setKeyframeChecked] = useState(
-    element?.animation?.animationName === '自定义动效'
+    element?.animation?.animationName === 'keyframes'
   )
   const onChangeKeyframeSwitch = (checked: boolean) => {
     if (checked) {
-      setCurrentAnimate('自定义动效')
+      setCurrentAnimate('keyframes')
       setKeyframeChecked(true)
     } else {
       setCurrentAnimate(null)
@@ -326,12 +326,12 @@ const TabAnimation: FC = () => {
       {element ? (
         <div>
           {element.animation.disable ? (
-            <div>不可编辑动效</div>
+            <div>{t('rightPannel.canNotEdit')}</div>
           ) : (
             <div>
               <div className="mb-4">
                 <div>
-                  <span className="mb-2 inline-block">当前动效：</span>
+                  <span className="mb-2 inline-block">{t('rightPannel.currentAnimation')}:</span>
                   {currentAnimate ? (
                     <div
                       onMouseEnter={onEnter(currentAnimate)}
@@ -348,12 +348,12 @@ const TabAnimation: FC = () => {
                     </div>
                   ) : (
                     <div className="w-24 h-10 p-2 relative rounded text-center overflow-hidden flex items-center leading-tight justify-center bg-gray-300 text-white transition duration-300 cursor-pointer break-all">
-                      无动效
+                      {t('rightPannel.noAnimation')}
                     </div>
                   )}
                 </div>
               </div>
-              <div className="block mb-2">选择动效：</div>
+              <div className="block mb-2">{t('rightPannel.chooseAnimation')}:</div>
               <ChooseAnimation
                 onEnter={onEnter}
                 onLeave={onLeave}
@@ -361,7 +361,8 @@ const TabAnimation: FC = () => {
               />
               <div className="border-t border-b border-gray-200 py-4 my-4">
                 <div className="block mb-2">
-                  自定义动效: <Switch checked={keyframeChecked} onChange={onChangeKeyframeSwitch} />
+                  {t('rightPannel.keyframes')}:&nbsp;
+                  <Switch checked={keyframeChecked} onChange={onChangeKeyframeSwitch} />
                 </div>
                 {keyframes.steps.map((value, index) => {
                   return (
@@ -369,11 +370,11 @@ const TabAnimation: FC = () => {
                       <div className="flex items-center">
                         <span className="mr-4">{value.percentNum}</span>
                         <Button size="small" type="primary" onClick={onDeleteStep(index)}>
-                          删除
+                          {t('rightPannel.delete')}
                         </Button>
                       </div>
                       <div className="flex justify-between items-center mb-2">
-                        <span>新增属性：</span>
+                        <span>{t('rightPannel.addStyle')}:</span>
                         <Select
                           key={i18n.resolvedLanguage}
                           style={{ width: 160 }}
@@ -417,30 +418,30 @@ const TabAnimation: FC = () => {
                   type="primary"
                   onClick={() => addStep(percentageInputValue)}
                 >
-                  新增关键帧
+                  {t('rightPannel.addKeyframe')}
                 </Button>
               </div>
               <div>
                 <div className="block mb-4">
-                  <div>执行时间:</div>
+                  <div>{t('rightPannel.duration')}:</div>
                   <InputNumber
                     value={duration}
                     onChange={onSetDuration}
-                    addonAfter="秒"
+                    addonAfter="s"
                     style={{ width: 120 }}
                   />
                 </div>
                 <div className="block mb-4">
-                  <div>动画延迟:</div>
+                  <div>{t('rightPannel.delay')}:</div>
                   <InputNumber
                     value={delay}
                     onChange={onSetDelay}
-                    addonAfter="秒"
+                    addonAfter="s"
                     style={{ width: 120 }}
                   />
                 </div>
                 <div className="block mb-4">
-                  <div>速度曲线:</div>
+                  <div>{t('rightPannel.timingFunction')}:</div>
                   <Input
                     value={timingFunction}
                     onChange={onSetTimingFunction}
@@ -448,7 +449,7 @@ const TabAnimation: FC = () => {
                   />
                 </div>
                 <div className="block mb-4">
-                  <div>动画次数:</div>
+                  <div>{t('rightPannel.iterationCount')}:</div>
                   <InputNumber
                     disabled={disableCount}
                     value={iterationCount}
@@ -457,14 +458,14 @@ const TabAnimation: FC = () => {
                   />
                 </div>
                 <div className="block mb-4">
-                  <div>循环播放:</div>
+                  <div>{t('rightPannel.infinite')}:</div>
                   <Switch
                     defaultChecked={typeof element.animation.animationIterationCount === 'string'}
                     onChange={onChangeSwitch}
                   />
                 </div>
                 <div className="block mb-4">
-                  <div>AnimationFillMode:</div>
+                  <div>{t('rightPannel.infinite')}:</div>
                   <Select
                     key={i18n.resolvedLanguage}
                     style={{ width: 160 }}
@@ -474,7 +475,7 @@ const TabAnimation: FC = () => {
                   />
                 </div>
                 <div className="block mb-4">
-                  <div>触发方式:</div>
+                  <div>{t('rightPannel.triggerMode')}:</div>
                   <Select
                     key={i18n.resolvedLanguage}
                     style={{ width: 160 }}
@@ -484,7 +485,7 @@ const TabAnimation: FC = () => {
                   />
                 </div>
                 <Button type="primary" disabled={!focusing} onClick={handleSubmit}>
-                  保存
+                  {t('rightPannel.save')}
                 </Button>
               </div>
             </div>

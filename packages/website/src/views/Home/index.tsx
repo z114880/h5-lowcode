@@ -11,12 +11,13 @@ import { useNavigate } from 'react-router-dom'
 import { Menu, Item } from 'react-contexify'
 import useHandleDelete from '@/editor/hooks/useHandleDelete'
 import useHandleZIndex from '@/editor/hooks/useHandleZIndex'
-
+import { useTranslation } from 'react-i18next'
 const MENU_ID = 'rightPannel'
 
 const Home: FC = () => {
   const { state, dispatch } = useContext(SchemaContext)
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const { schema, currentEditor, showLine, focusing } = state
   const devideDialogContainer = () => {
     const dialogs = schema.container.map((val) => {
@@ -52,13 +53,13 @@ const Home: FC = () => {
   const handleItemClick = ({ id, props }: any) => {
     switch (id) {
       case 'delete':
-        onDeleteWithoutFocusing(props.containerIndex, props.blockIndex)
+        onDeleteWithoutFocusing(t, props.containerIndex, props.blockIndex)
         break
       case 'addZIndex':
-        onAddZIndexWithouFocusing(props.containerIndex, props.blockIndex)
+        onAddZIndexWithouFocusing(t, props.containerIndex, props.blockIndex)
         break
       case 'minusZIndex':
-        onMinusZIndexWithoutFocuing(props.containerIndex, props.blockIndex)
+        onMinusZIndexWithoutFocuing(t, props.containerIndex, props.blockIndex)
         break
     }
   }
@@ -113,7 +114,7 @@ const Home: FC = () => {
               type="primary"
               className="ml-4"
             >
-              隐藏辅助线
+              {t('leftPannel.showGuideline')}
             </Button>
           ) : (
             <Button
@@ -121,7 +122,7 @@ const Home: FC = () => {
               type="primary"
               className="ml-4"
             >
-              显示辅助线
+              {t('leftPannel.hideGuideline')}
             </Button>
           )}
         </section>
@@ -129,13 +130,13 @@ const Home: FC = () => {
       </section>
       <Menu id={MENU_ID} animation={false}>
         <Item id="delete" disabled={isHiddenDelete} onClick={handleItemClick}>
-          删除
+          {t('header.delete')}
         </Item>
         <Item id="addZIndex" disabled={isHiddenZIndex} onClick={handleItemClick}>
-          上移一层
+          {t('header.increaseZIndex')}
         </Item>
         <Item id="minusZIndex" disabled={isHiddenZIndex} onClick={handleItemClick}>
-          下移一层
+          {t('header.decreaseZIndex')}
         </Item>
       </Menu>
     </>

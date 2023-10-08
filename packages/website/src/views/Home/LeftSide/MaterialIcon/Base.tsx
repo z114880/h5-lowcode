@@ -1,7 +1,9 @@
 import { FC, memo } from 'react'
 import { registerConfig } from '@/components/EditableMaterial'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 const Base: FC = () => {
+  const { t } = useTranslation()
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const Holder = (borderB?: boolean, borderR?: boolean) => (
     <div
@@ -15,14 +17,16 @@ const Base: FC = () => {
 
   return (
     <div className="w-[300px] h-[calc(100vh-320px)] overflow-y-scroll shadow-md">
-      <h2 className="border-b border-r border-gray-200 mb-0 text-center h-9 leading-9">基础容器</h2>
+      <h2 className="border-b border-r border-gray-200 mb-0 text-center h-9 leading-9">
+        {t('leftPannel.baseLayout')}
+      </h2>
       <div className="flex flex-row flex-wrap">
         {registerConfig.componentMap['baseLayout'].icon()}
         {registerConfig.componentMap['tabLayout'].icon()}
         {registerConfig.componentMap['blockLayout'].icon()}
       </div>
       <h2 className="border-b border-r border-t border-gray-200 mb-0 text-center h-9 leading-9">
-        基础组件
+        {t('leftPannel.baseComponent')}
       </h2>
       <div className="flex flex-row flex-wrap">
         {registerConfig.componentMap['button'].icon(true)}

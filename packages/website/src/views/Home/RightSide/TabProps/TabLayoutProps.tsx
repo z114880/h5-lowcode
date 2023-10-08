@@ -9,11 +9,12 @@ import type { CheckboxValueType } from 'antd/es/checkbox/Group'
 import deepcopy from 'deepcopy'
 import { isRegNumber } from '@/utils/tools'
 import { blockType } from '../../../../../../../types/Schema'
-
+import { useTranslation } from 'react-i18next'
 // eslint-disable-next-line react/display-name
 const TabLayoutProps = forwardRef((props, ref) => {
   const { state, dispatch } = useContext(SchemaContext)
   const { focusing, schema } = state
+  const { t } = useTranslation()
   const getFocusEle = () => {
     if (focusing) {
       if (focusing.blockIndex.length > 0) {
@@ -168,7 +169,7 @@ const TabLayoutProps = forwardRef((props, ref) => {
         }}
         destroyOnClose
       >
-        <div>删除Tab:</div>
+        <div>{t('rightPannel.deleteTab')}:</div>
         <Checkbox.Group style={{ width: '100%' }} onChange={onChangeBox}>
           {tabs.map((_val: Record<string, any>, ind: number) => {
             return (
@@ -181,7 +182,7 @@ const TabLayoutProps = forwardRef((props, ref) => {
       </Modal>
       <div className="bg-gray-100 p-2 mb-2 rounded-md">
         <div className="mb-4">
-          <div>激活Tab:</div>
+          <div>{t('rightPannel.activeTab')}:</div>
           <Radio.Group onChange={onChange} value={tabValue}>
             {tabs.map((_val: Record<string, any>, ind: number) => {
               return (
@@ -194,16 +195,16 @@ const TabLayoutProps = forwardRef((props, ref) => {
         </div>
         <div className="">
           <Button type="primary" onClick={onAddTab}>
-            新增Tab
+            {t('rightPannel.addTab')}
           </Button>
           <Button className="ml-4" type="primary" onClick={() => setOpen(true)}>
-            删除Tab
+            {t('rightPannel.deleteTab')}
           </Button>
         </div>
       </div>
 
       <div className="mb-4">
-        <div>Tab高度:</div>
+        <div> {t('rightPannel.tabHeight')}:</div>
         <Input value={headerHeight} onChange={(e) => setHeaderHeight(e.target.value)} />
       </div>
     </>

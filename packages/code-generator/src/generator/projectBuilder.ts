@@ -255,7 +255,6 @@ export default class ProjectBuilder {
 
   public buildBottomStr() {
     let bottomStr = ''
-    console.log(this.Container.animationArr, 'aaa')
     this.Container.animationArr.forEach((obj) => {
       if (obj.triggerMode === 'default') {
         bottomStr += `defaultTrigger('${obj.className}','${obj.animationClassName}');\n`

@@ -211,7 +211,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
         type: 'pushQueue',
         payload: newSchema
       })
-      message.success('成功')
+      message.success(t('rightPannel.success'))
     }
   }
   const onSelectAttr = (name: string) => {

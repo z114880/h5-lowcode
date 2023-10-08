@@ -25,7 +25,11 @@ const onMessage = function (e: any) {
   document.head.appendChild(styleTag!)
   const script = document.createElement('script')
   script.innerHTML = previewObj.bottom
-  document.body.appendChild(script)
+  const bottomScript = document.getElementById('bottomScript')!
+  if (bottomScript.innerHTML) {
+    bottomScript!.innerHTML = ''
+  }
+  bottomScript.appendChild(script)
 }
 
 broadCastChannel.onmessage = deBounce(onMessage, 1000)

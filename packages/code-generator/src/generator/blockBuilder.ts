@@ -29,7 +29,7 @@ export default class BlockBuilder {
           delete animation.keyframes
           delete animation.triggerMode
         }
-        if (block.animation.animationName === '自定义动效') {
+        if (block.animation.animationName === 'keyframes') {
           animation.animationName = randomKeyframsName
           keyframesStr = `@keyframes ${randomKeyframsName} {
             ${

@@ -48,6 +48,7 @@ const Header: FC = () => {
     onMinusZIndex
   } = useHandleZIndex(schema, dispatch, focusing)
   const { redo, undo, enableRedo, enableUndo } = useSteps()
+  const { t, i18n } = useTranslation()
 
   const onDownload = useCallback(() => {
     console.log(schema)
@@ -159,7 +160,7 @@ const Header: FC = () => {
   const items: MenuProps['items'] = [
     {
       key: '1',
-      label: <div onClick={logout}>退出登录</div>
+      label: <div onClick={logout}>{t('header.logout')}</div>
     }
   ]
 
@@ -175,39 +176,37 @@ const Header: FC = () => {
       try {
         const res = await uploadApi(formData)
         if (res.status === 201) {
-          message.success('部署成功')
+          message.success(t('header.deploySuccess'))
           setQrCode(`https://www.funet.top/pages/${pageConfig.projectName}/index.html`)
         } else {
-          message.error('部署失败，请重试')
+          message.error(t('header.deployFailed'))
         }
       } catch (error: any) {
-        message.error('部署失败，请重试')
+        message.error(t('header.deployFailed'))
       }
     } else if (!pageConfig.projectName) {
-      message.warning('请补全项目名称')
+      message.warning(t('header.completeProjectName'))
     }
   }
   const copyLink = async () => {
     try {
       //clipboard Api只能在https或者localhost中调用
       await navigator.clipboard.writeText(qrCode)
-      message.success('已拷贝至剪切板')
+      message.success(t('header.copiedToClipboard'))
     } catch (e) {
       console.log(e)
-      message.error('只能在https或者localhost中调用')
+      message.error(t('header.httpsLocalhostOnly'))
     }
   }
 
   const [isOpenAlbum, setIsOpenAlbum] = useState(false)
   const openAlbum = () => {
     if (pageConfig.projectName) setIsOpenAlbum(true)
-    else message.warning('请补全项目名称')
+    else message.warning(t('header.completeProjectName'))
   }
   const closeAlbum = useCallback(() => {
     setIsOpenAlbum(false)
   }, [])
-
-  const { t, i18n } = useTranslation()
 
   const i18nMenuItems: MenuProps['items'] = [
     {
@@ -241,27 +240,43 @@ const Header: FC = () => {
           className="mt-4"
           form={form}
           onFinish={onFinish}
-          labelCol={{ span: 5 }}
-          wrapperCol={{ span: 19 }}
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 18 }}
           initialValues={config}
         >
           <Form.Item
-            label="项目名称"
+            label={t('header.projectName')}
             name="projectName"
-            rules={[{ required: true, message: '请输入项目名称' }]}
+            rules={[{ required: true, message: t('header.inputProjectName') }]}
           >
             <Input onChange={handleChangeConfig('projectName')} />
           </Form.Item>
-          <Form.Item label="标题名称" name="title" rules={[{ message: '请输入标题名称' }]}>
+          <Form.Item
+            label={t('header.shareTitle')}
+            name="title"
+            rules={[{ message: t('header.shareTitle') }]}
+          >
             <Input onChange={handleChangeConfig('title')} />
           </Form.Item>
-          <Form.Item label="分享标题" name="sharedTitle" rules={[{ message: '请输入分享标题' }]}>
+          <Form.Item
+            label={t('header.shareTitle')}
+            name="sharedTitle"
+            rules={[{ message: t('header.inputShareTitle') }]}
+          >
             <Input onChange={handleChangeConfig('sharedTitle')} />
           </Form.Item>
-          <Form.Item label="分享摘要" name="sharedMessage" rules={[{ message: '请输入分享摘要' }]}>
+          <Form.Item
+            label={t('header.shareMessage')}
+            name="sharedMessage"
+            rules={[{ message: t('header.inputShareMessage') }]}
+          >
             <Input onChange={handleChangeConfig('sharedMessage')} />
           </Form.Item>
-          <Form.Item label="分享Logo" name="sharedLogo" rules={[{ message: '请输入分享Logo' }]}>
+          <Form.Item
+            label={t('header.shareLogo')}
+            name="sharedLogo"
+            rules={[{ message: t('header.inputShareLogo') }]}
+          >
             <Input onChange={handleChangeConfig('sharedLogo')} />
           </Form.Item>
         </Form>

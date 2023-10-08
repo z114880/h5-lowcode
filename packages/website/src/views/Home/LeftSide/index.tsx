@@ -6,29 +6,30 @@ import styles from './index.module.scss'
 import classnames from 'classnames'
 import Main from './EditorPages/Main'
 import Dialog from './EditorPages/Dialog'
-
+import { useTranslation } from 'react-i18next'
 const LeftSide: FC = () => {
+  const { t } = useTranslation()
   const items = [
     {
-      label: '基础组件',
-      key: '基础组件',
+      label: <div className="w-[56px]">{t('leftPannel.baseComponent')}</div>,
+      key: 'baseComponent',
       children: <Base />
     },
     {
-      label: '业务组件',
-      key: '业务组件',
+      label: <div className="w-[56px]">{t('leftPannel.customizedComponent')}</div>,
+      key: 'customizedComponent',
       children: <Customized />
     }
   ]
   const topItems = [
     {
-      label: '页面',
-      key: '页面',
+      label: t('leftPannel.page'),
+      key: 'page',
       children: <Main />
     },
     {
-      label: '弹窗',
-      key: '弹窗',
+      label: t('leftPannel.modal'),
+      key: 'modal',
       children: <Dialog />
     }
   ]
@@ -38,7 +39,7 @@ const LeftSide: FC = () => {
         <Tabs type="card" defaultActiveKey="1" items={topItems} />
       </div>
       <div className="w-[405px] h-[39px] bg-[rgba(0,0,0,0.02)] border-b border-t border-[rgba(5, 5, 5, 0.06)] text-center leading-[39px] text-[14px]">
-        组件
+        {t('leftPannel.component')}
       </div>
       <Tabs
         defaultActiveKey="1"

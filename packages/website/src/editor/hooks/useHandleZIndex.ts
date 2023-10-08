@@ -30,37 +30,40 @@ const useHandleZIndex = (
     [schema]
   )
 
-  const onAddZIndex = useCallback(() => {
-    if (!isActive) return
-    const newSchema = deepcopy(schema)
-    const newElement = getBlockElementByIndexes(
-      newSchema,
-      focusing!.containerIndex,
-      focusing!.blockIndex
-    )
-    if (newElement === 'notFound') {
+  const onAddZIndex = useCallback(
+    (t: BaseFunction) => {
+      if (!isActive) return
+      const newSchema = deepcopy(schema)
+      const newElement = getBlockElementByIndexes(
+        newSchema,
+        focusing!.containerIndex,
+        focusing!.blockIndex
+      )
+      if (newElement === 'notFound') {
+        dispatch({
+          type: 'setFocusing',
+          payload: null
+        })
+        return
+      }
+      newElement.position.zIndex++
+      message.success(t('toast.currentZIndex') + newElement.position.zIndex)
       dispatch({
-        type: 'setFocusing',
-        payload: null
+        type: 'setSchema',
+        payload: newSchema
       })
-      return
-    }
-    newElement.position.zIndex++
-    message.success('成功！当前层级：' + newElement.position.zIndex)
-    dispatch({
-      type: 'setSchema',
-      payload: newSchema
-    })
-    dispatch({
-      type: 'pushQueue',
-      payload: newSchema
-    })
-  }, [isActive, focusing, schema])
+      dispatch({
+        type: 'pushQueue',
+        payload: newSchema
+      })
+    },
+    [isActive, focusing, schema]
+  )
 
   const onAddZIndexWithouFocusing = useCallback(
-    (containerIndex: number, blockIndex: number[]) => {
+    (t: BaseFunction, containerIndex: number, blockIndex: number[]) => {
       if (!isActive) {
-        message.warning('此元素无法设置层级')
+        message.warning(t('toast.canNotSetZindex'))
         return
       }
       const newSchema = deepcopy(schema)
@@ -73,7 +76,7 @@ const useHandleZIndex = (
         return
       }
       newElement.position.zIndex++
-      message.success('成功！当前层级：' + newElement.position.zIndex)
+      message.success(t('toast.currentZIndex') + newElement.position.zIndex)
       dispatch({
         type: 'setSchema',
         payload: newSchema
@@ -86,41 +89,44 @@ const useHandleZIndex = (
     [schema]
   )
 
-  const onMinusZIndex = useCallback(() => {
-    if (!isActive) return
-    const newSchema = deepcopy(schema)
-    const newElement = getBlockElementByIndexes(
-      newSchema,
-      focusing!.containerIndex,
-      focusing!.blockIndex
-    )
-    if (newElement === 'notFound') {
+  const onMinusZIndex = useCallback(
+    (t: BaseFunction) => {
+      if (!isActive) return
+      const newSchema = deepcopy(schema)
+      const newElement = getBlockElementByIndexes(
+        newSchema,
+        focusing!.containerIndex,
+        focusing!.blockIndex
+      )
+      if (newElement === 'notFound') {
+        dispatch({
+          type: 'setFocusing',
+          payload: null
+        })
+        return
+      }
+      if (newElement.position.zIndex > 1) {
+        newElement.position.zIndex--
+        message.success(t('toast.currentZIndex') + newElement.position.zIndex)
+      } else {
+        message.error(t('toast.minimalZIndex'))
+      }
       dispatch({
-        type: 'setFocusing',
-        payload: null
+        type: 'setSchema',
+        payload: newSchema
       })
-      return
-    }
-    if (newElement.position.zIndex > 1) {
-      newElement.position.zIndex--
-      message.success('成功！当前层级：' + newElement.position.zIndex)
-    } else {
-      message.error('错误！层级最低为1')
-    }
-    dispatch({
-      type: 'setSchema',
-      payload: newSchema
-    })
-    dispatch({
-      type: 'pushQueue',
-      payload: newSchema
-    })
-  }, [isActive, focusing, schema])
+      dispatch({
+        type: 'pushQueue',
+        payload: newSchema
+      })
+    },
+    [isActive, focusing, schema]
+  )
 
   const onMinusZIndexWithoutFocuing = useCallback(
-    (containerIndex: number, blockIndex: number[]) => {
+    (t: BaseFunction, containerIndex: number, blockIndex: number[]) => {
       if (!isActive) {
-        message.warning('此元素无法设置层级')
+        message.warning(t('toast.canNotSetZindex'))
         return
       }
       const newSchema = deepcopy(schema)
@@ -134,9 +140,9 @@ const useHandleZIndex = (
       }
       if (newElement.position.zIndex > 1) {
         newElement.position.zIndex--
-        message.success('成功！当前层级：' + newElement.position.zIndex)
+        message.success(t('toast.currentZIndex') + newElement.position.zIndex)
       } else {
-        message.error('错误！层级最低为1')
+        message.error(t('toast.minimalZIndex'))
       }
       dispatch({
         type: 'setSchema',

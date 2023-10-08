@@ -82,6 +82,9 @@ function isRegNumber(text) {
     return isNumber.test(text);
 }
 function addRem(text, item) {
+    if (text === '0') {
+        return '';
+    }
     if (isRegNumber(text) &&
         item !== 'zIndex' &&
         item !== 'animationDelay' &&
@@ -186,7 +189,7 @@ class BlockBuilder {
                     delete animation.keyframes;
                     delete animation.triggerMode;
                 }
-                if (block.animation.animationName === '自定义动效') {
+                if (block.animation.animationName === 'keyframes') {
                     animation.animationName = randomKeyframsName;
                     keyframesStr = `@keyframes ${randomKeyframsName} {
             ${block.animation.keyframes?.steps
@@ -459,7 +462,6 @@ class ProjectBuilder {
     }
     buildBottomStr() {
         let bottomStr = '';
-        console.log(this.Container.animationArr, 'aaa');
         this.Container.animationArr.forEach((obj) => {
             if (obj.triggerMode === 'default') {
                 bottomStr += `defaultTrigger('${obj.className}','${obj.animationClassName}');\n`;

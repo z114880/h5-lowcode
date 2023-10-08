@@ -1,9 +1,9 @@
 import { FC, useContext } from 'react'
 import { SchemaContext } from '@/utils/context'
-
+import { useTranslation } from 'react-i18next'
 const EditorPages: FC = () => {
   const { state, dispatch } = useContext(SchemaContext)
-
+  const { t } = useTranslation()
   const setCurrentHome = () => {
     dispatch({
       type: 'setCurrentEditor',
@@ -21,7 +21,7 @@ const EditorPages: FC = () => {
           background: state.currentEditor.current === 'main' ? 'rgb(219, 234, 254)' : ''
         }}
       >
-        主页面
+        {t('leftPannel.mainPage')}
       </div>
     </div>
   )
