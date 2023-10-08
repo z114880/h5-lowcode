@@ -41,9 +41,9 @@ i18n
             logout: 'logout',
             deploySuccess: 'deploy success',
             deployFailed: 'deploy failed, please try again',
-            completeProjectName: 'please complete project name',
+            completeProjectName: 'Please complete project name',
             copiedToClipboard: 'copied to clipboard',
-            httpsLocalhostOnly: 'clipboard API is only in HTTPS/localhost',
+            httpsLocalhostOnly: 'Clipboard API is only in HTTPS/localhost',
             projectName: 'project name',
             shareTitle: 'share title',
             shareMessage: 'share message',
@@ -87,7 +87,7 @@ i18n
             showGuideline: 'show guideline',
             hideGuideline: 'hide guideline',
             customizedModal: 'customized modal',
-            uniqueModalName: 'modal name has to be unique!'
+            uniqueModalName: 'Modal name has to be unique!'
           },
           rightPannel: {
             name: 'name',
