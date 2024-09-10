@@ -17,7 +17,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.12.0' # 可以根据项目需求设置 Node.js 版本
-        cache: 'pnpm'
   
     - name: Set up pnpm
       uses: pnpm/action-setup@v3.0.0
