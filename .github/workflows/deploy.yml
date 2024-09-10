@@ -26,6 +26,11 @@ jobs:
         restore-keys: |
             ${{ runner.os }}-pnpm-
   
+    - name: Install pnpm
+      run: |
+        npm install -g pnpm
+        echo "PNPM_VERSION=$(npx pnpm --version)" >> $GITHUB_ENV
+
     - name: Install dependencies
       run: pnpm install
   
