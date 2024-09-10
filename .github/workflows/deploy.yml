@@ -1,0 +1,35 @@
+name: Build and Deploy Lowcode Project
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.13.0' # 可以根据项目需求设置 Node.js 版本
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build:website
+
+    - name: Deploy to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        source: "lowcode-dist/*"
+        target: "/root" # 服务器上的部署目录

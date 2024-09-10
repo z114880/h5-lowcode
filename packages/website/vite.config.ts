@@ -17,7 +17,7 @@ export default defineConfig({
     proxy: {}
   },
   build: {
-    outDir: '../../../lowcode-dist/',
+    outDir: '../../lowcode-dist/',
     emptyOutDir: true,
     rollupOptions: {
       input: {
