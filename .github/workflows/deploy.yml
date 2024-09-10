@@ -18,8 +18,17 @@ jobs:
       with:
         node-version: '16.13.0' # 可以根据项目需求设置 Node.js 版本
 
+    - name: Set up pnpm cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+            ${{ runner.os }}-pnpm-
+  
     - name: Install dependencies
-      run: npm install
+      run: pnpm install
+  
 
     - name: Build project
       run: npm run build:website
