@@ -116,7 +116,7 @@ i18n
             delay: 'delay',
             timingFunction: 'timing function',
             iterationCount: 'iteration count',
-            infinite: 'infinite',
+            infinite: 'fill mode',
             AnimationFillMode: 'AnimationFillMode',
             triggerMode: 'trigger mode',
             default: 'default',

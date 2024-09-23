@@ -358,6 +358,7 @@ class ProjectBuilder {
         this.options = options;
         this.createChunk(Schema);
         const body = this.addBody();
+        console.log(body, 'bb');
         this.template = `<!DOCTYPE html>
     <html lang="en">
     

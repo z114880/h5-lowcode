@@ -335,6 +335,7 @@ export default class ProjectBuilder {
     const zip = this.compressZip()
     zip.file('index.html', htmlTemplate)
     zip.file('index.css', cssTemplate)
+    zip.file('bottom.js', bottomJs + this.buildBottomStr())
     const deployZip = await zip.generateAsync({ type: 'blob' })
     return new File([deployZip], `${this.options.config.projectName || '代码'}.zip`)
   }
