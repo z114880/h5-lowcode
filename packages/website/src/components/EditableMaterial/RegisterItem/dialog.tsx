@@ -11,7 +11,8 @@ const dialog: componentItem = {
   position: {
     position: 'fixed',
     width: 375,
-    zIndex: 100
+    zIndex: 100,
+    top: 0
   },
   props: {
     style: {},
