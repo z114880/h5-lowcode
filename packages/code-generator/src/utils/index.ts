@@ -17,7 +17,7 @@ export function isRegNumber(text: string) {
 }
 
 export function addRem(text: string, item: string) {
-  if (text === '0') {
+  if (text === '0' && item !== 'top') {
     return ''
   }
   if (

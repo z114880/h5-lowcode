@@ -82,7 +82,7 @@ function isRegNumber(text) {
     return isNumber.test(text);
 }
 function addRem(text, item) {
-    if (text === '0') {
+    if (text === '0' && item !== 'top') {
         return '';
     }
     if (isRegNumber(text) &&
