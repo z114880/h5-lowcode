@@ -232,6 +232,10 @@ export default class ProjectBuilder {
         ? '<script src="./material/TimeLeftText.js" type="module"></script>'
         : ''
     }
+    <!-- 自定义代码 -->
+    <script>
+      ${this.options.config.additonalCode || ''}
+    </script>
     <!-- 微信分享代码 -->
     <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- 统计和分享代码 -->

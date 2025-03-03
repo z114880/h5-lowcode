@@ -358,7 +358,6 @@ class ProjectBuilder {
         this.options = options;
         this.createChunk(Schema);
         const body = this.addBody();
-        console.log(body, 'bb');
         this.template = `<!DOCTYPE html>
     <html lang="en">
     
@@ -441,6 +440,10 @@ class ProjectBuilder {
             : ''}${body.indexOf('TimeLeftText'.toLowerCase()) > -1
             ? '<script src="./material/TimeLeftText.js" type="module"></script>'
             : ''}
+    <!-- 自定义代码 -->
+    <script>
+      ${this.options.config.additonalCode || ''}
+    </script>
     <!-- 微信分享代码 -->
     <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- 统计和分享代码 -->
@@ -542,6 +545,7 @@ class ProjectBuilder {
         const zip = this.compressZip();
         zip.file('index.html', htmlTemplate);
         zip.file('index.css', cssTemplate);
+        zip.file('bottom.js', bottomJs + this.buildBottomStr());
         const deployZip = await zip.generateAsync({ type: 'blob' });
         return new File([deployZip], `${this.options.config.projectName || '代码'}.zip`);
     }

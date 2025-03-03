@@ -96,4 +96,5 @@ export type pageConfigType = Partial<{
   sharedTitle: string
   sharedMessage: string
   sharedLogo: string
+  additonalCode: string
 }>

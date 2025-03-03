@@ -35,6 +35,7 @@ import { pageConfigType } from '@/editor/types'
 import { useNavigate } from 'react-router-dom'
 import { uploadApi } from '@/apis'
 import Album from './Album'
+import Editor from './Editor'
 import { useTranslation } from 'react-i18next'
 
 const { TextArea } = Input
@@ -208,6 +209,15 @@ const Header: FC = () => {
     setIsOpenAlbum(false)
   }, [])
 
+  const [isOpenEditor, setIsOpenEditor] = useState(false)
+  const openEditor = () => {
+    if (pageConfig.projectName) setIsOpenEditor(true)
+    else message.warning(t('header.completeProjectName'))
+  }
+  const closeEditor = useCallback(() => {
+    setIsOpenEditor(false)
+  }, [])
+
   const i18nMenuItems: MenuProps['items'] = [
     {
       label: <div onClick={() => i18n.changeLanguage('en')}>English</div>,
@@ -357,6 +367,12 @@ const Header: FC = () => {
           <Album isOpen={isOpenAlbum} closeAlbum={closeAlbum} />
           <Button type="primary" onClick={openAlbum}>
             {t('header.album')}
+          </Button>
+        </div>
+        <div className="flex items-center">
+          <Editor isOpen={isOpenEditor} closeEditor={closeEditor} />
+          <Button type="primary" onClick={openEditor}>
+            {t('header.editor')}
           </Button>
         </div>
       </div>

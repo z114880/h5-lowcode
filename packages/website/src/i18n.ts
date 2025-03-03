@@ -33,6 +33,7 @@ i18n
             preview: 'preview',
             deploy: 'deploy',
             album: 'album',
+            editor: 'editor',
             makeSureDeploy: 'Are you sure to deploy?',
             overwriteProductionProject:
               'This operation will overwrite the current production project.',
@@ -198,6 +199,7 @@ i18n
             preview: '预览',
             deploy: '部署',
             album: '图片库',
+            editor: '编辑器',
             makeSureDeploy: '确定要部署吗？',
             overwriteProductionProject: '此操作会覆盖线上项目',
             yes: '是',

@@ -11,6 +11,7 @@ import useFocus from '@/editor/hooks/useFocus'
 import { getBlockElementByIndexes, getBlocksByIndexes } from '@/editor/utils/tools'
 import { useContextMenu } from 'react-contexify'
 import { isNumber } from '@/utils/tools'
+import { getRandomString } from '@/utils/tools'
 
 type propsType = {
   containerIndex: number
@@ -69,7 +70,13 @@ const BaseLayout: FC<propsType> = (props) => {
     const event = registerConfig.componentMap[key as MaterialItemsKeys].event
     const animation = registerConfig.componentMap[key as MaterialItemsKeys].animation
     const blocks = registerConfig.componentMap[key as MaterialItemsKeys].blocks || []
-
+    props.attr = {
+      ...props.attr,
+      name: {
+        type: 'disabled',
+        value: getRandomString(6)
+      }
+    }
     const block = {
       key: key,
       position: {

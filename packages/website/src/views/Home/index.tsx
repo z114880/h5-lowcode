@@ -79,9 +79,9 @@ const Home: FC = () => {
   useEffect(() => {
     const initialCastChannel = new BroadcastChannel('Init')
     initialCastChannel.onmessage = () => {
-      broadCastChannel.postMessage(state.schema)
+      broadCastChannel.postMessage(state)
     }
-  }, [state.schema])
+  }, [state])
 
   useEffect(() => {
     if (!localStorage.getItem('name') || !localStorage.getItem('avatar')) {
