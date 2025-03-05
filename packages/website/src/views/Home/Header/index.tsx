@@ -291,7 +291,7 @@ const Header: FC = () => {
           </Form.Item>
         </Form>
       </Modal>
-      <div className="w-[1000px] ml-[400px] pr-4 flex items-center justify-between">
+      <div className="w-[1200px] ml-[300px] pr-4 flex items-center justify-between">
         <ButtonItem
           actived={enableUndo}
           event={undo}
