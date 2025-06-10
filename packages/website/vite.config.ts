@@ -9,7 +9,7 @@ export default defineConfig({
     alias: { '@': path.resolve(__dirname, 'src') }
   },
   plugins: [react()],
-  base: 'https://file.funet.top/',
+  // base: 'https://file.funet.top/',
   server: {
     port: 8080,
     // hmr: false,

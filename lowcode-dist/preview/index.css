@@ -1,0 +1,106 @@
+mat-baselayout {
+  display: block;
+  position: relative;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+mat-blocklayout {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+mat-tabheader,
+mat-tabcontent,
+mat-tabheaderitem,
+mat-tabheaderitemactive,
+mat-tabheaderitemdeactive {
+  position: absolute;
+  display: block;
+  position: relative;
+  overflow: unset;
+  user-select: none;
+}
+mat-tablayout {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  user-select: none;
+}
+mat-tabheaderitem,
+mat-tabheaderitemactive,
+mat-tabheaderitemdeactive {
+  height: 100%;
+}
+
+mat-tabheaderitemactive,
+mat-tabheaderitemdeactive {
+  display: none;
+}
+
+mat-image,
+mat-button,
+mat-closebutton,
+mat-drawbutton,
+mat-submitbutton,
+mat-prizebutton,
+mat-infobutton,
+mat-loginbutton,
+mat-sharebutton,
+mat-exchangebutton,
+mat-showmorebutton,
+mat-copycouponbutton {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+mat-text {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  line-height: normal;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+mat-input,
+mat-textarea {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  line-height: normal;
+}
+
+mat-closebutton,
+mat-drawbutton,
+mat-submitbutton,
+mat-prizebutton,
+mat-infobutton,
+mat-loginbutton,
+mat-sharebutton,
+mat-exchangebutton,
+mat-showmorebutton,
+mat-copycouponbutton,
+mat-input,
+mat-textarea,
+mat-text {
+  position: absolute;
+}

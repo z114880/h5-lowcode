@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  h5-lowcode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: h5-lowcode-app
+    container_name: h5-lowcode-container
+    ports:
+      - "8080:80"
+    restart: always 

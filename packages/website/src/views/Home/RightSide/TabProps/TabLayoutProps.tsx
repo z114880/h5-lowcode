@@ -5,7 +5,6 @@ import { SchemaContext } from '@/utils/context'
 import { getBlockElementByIndexes, getKeyElementByBlocks } from '@/editor/utils/tools'
 import defaultAddTabJson from './defaultAddTab.json'
 import defaultAddContent from './defaultAddContent.json'
-import type { CheckboxValueType } from 'antd/es/checkbox/Group'
 import deepcopy from 'deepcopy'
 import { isRegNumber } from '@/utils/tools'
 import { blockType } from '../../../../../../../types/Schema'
@@ -38,7 +37,7 @@ const TabLayoutProps = forwardRef((props, ref) => {
   const tabs = getKeyElementByBlocks('tabHeader', element.blocks)!.blocks!
   const tabValue = element.tabAttr.active
   const [open, setOpen] = useState(false)
-  const [box, setBox] = useState<CheckboxValueType[]>([])
+  const [box, setBox] = useState<(string | number | boolean)[]>([])
   const [headerHeight, setHeaderHeight] = useState<string>(String(element.props.attr.headerHeight))
 
   useEffect(() => {
@@ -100,7 +99,7 @@ const TabLayoutProps = forwardRef((props, ref) => {
       })
     }
   }
-  const onChangeBox = (checkedValues: CheckboxValueType[]) => {
+  const onChangeBox = (checkedValues: (string | number | boolean)[]) => {
     setBox(checkedValues)
   }
   const handleOk = () => {
@@ -108,7 +107,7 @@ const TabLayoutProps = forwardRef((props, ref) => {
     const newContent = deepcopy(getKeyElementByBlocks('tabContent', element.blocks)!.blocks!)
     const newBox = deepcopy(box).sort((a, b) => (b as number) - (a as number))
     let active = -1
-    newBox.forEach((val: CheckboxValueType) => {
+    newBox.forEach((val: string | number | boolean) => {
       newTabs.splice(val as number, 1)
       newContent.splice(val as number, 1)
       if (element.tabAttr.active > val) {
