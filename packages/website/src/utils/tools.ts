@@ -11,7 +11,7 @@ export const getNodeEnv: () => 'development' | 'production' | undefined = () => 
  * 获取baseUrl
  */
 export const getBaseUrl = (): string | undefined => {
-  if (getNodeEnv() === 'development') return 'https://www.funet.top/api'
+  if (getNodeEnv() === 'development') return 'http://localhost:3000/api'
   else if (getNodeEnv() === 'production') return 'https://www.funet.top/api'
   return undefined
 }
