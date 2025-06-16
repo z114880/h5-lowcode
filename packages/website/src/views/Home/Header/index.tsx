@@ -379,7 +379,7 @@ const Header: FC = () => {
 
       <div className="flex h-full items-center mr-10 pl-4 pr-4">
         <Dropdown menu={{ items: i18nMenuItems }} placement="bottom" arrow>
-          <div className="h-8 cursor-pointer pl-2 pr-2 rounded-md mr-2">
+          <div className="flex items-center h-8 cursor-pointer pl-2 pr-2 rounded-md mr-2">
             <GlobalOutlined />
           </div>
         </Dropdown>
