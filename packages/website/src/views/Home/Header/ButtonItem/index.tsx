@@ -8,11 +8,10 @@ type PropsType = {
   event?: BaseFunction
 }
 
-const ButtonItem: FC<PropsType> = (props) => {
-  const { name, icon, event, actived } = props
+const ButtonItem: FC<PropsType> = ({ name, icon, event, actived = true }) => {
   const { t } = useTranslation()
   const transEvent = () => {
-    event!(t)
+    if (event) event!(t)
   }
   return (
     <div
@@ -26,8 +25,5 @@ const ButtonItem: FC<PropsType> = (props) => {
       <div className="w-18 h-18 text-xs text-center">{name}</div>
     </div>
   )
-}
-ButtonItem.defaultProps = {
-  actived: true
 }
 export default memo(ButtonItem)

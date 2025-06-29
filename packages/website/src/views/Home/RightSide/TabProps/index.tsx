@@ -300,8 +300,7 @@ const TabProps: FC<{ size: { width?: number; height?: number; left?: number; top
             (modalAction === 'backTop' && modalParam === '')
           )
         }}
-        destroyOnClose
-        bodyStyle={{ height: '150px' }}
+        styles={{ body: { height: '150px' } }}
       >
         <div className="mb-4">
           <div>{t('rightPannel.chooseAction')}</div>

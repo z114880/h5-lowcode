@@ -19,22 +19,22 @@ type propsType = {
   keyframeIndex: number
 }
 
-const KeyframeResizer: FC<propsType> = (props) => {
+const KeyframeResizer: FC<propsType> = ({
+  children,
+  type,
+  blockIndex,
+  containerIndex,
+  right = true,
+  bottom = true,
+  left = true,
+  top = true,
+  rightBottom = true,
+  isFocusing,
+  double,
+  isContainer = false,
+  keyframeIndex
+}) => {
   const { state, dispatch } = useContext(SchemaContext)
-  const {
-    type,
-    blockIndex,
-    containerIndex,
-    children,
-    right,
-    bottom,
-    left,
-    top,
-    rightBottom,
-    isFocusing,
-    isContainer,
-    keyframeIndex
-  } = props
   const { schema } = state
   const isMoving = useRef<boolean>(false)
   const upSchema = useRef({})
@@ -155,13 +155,5 @@ const KeyframeResizer: FC<propsType> = (props) => {
       )}
     </>
   )
-}
-KeyframeResizer.defaultProps = {
-  left: true,
-  right: true,
-  bottom: true,
-  top: true,
-  rightBottom: true,
-  isContainer: false
 }
 export default KeyframeResizer

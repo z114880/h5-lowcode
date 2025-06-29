@@ -26,8 +26,7 @@ type propsType = {
 
 const MENU_ID = 'rightPannel'
 
-const BlockLayout: FC<propsType> = (props) => {
-  const { containerIndex, blockIndex, slotName } = props
+const BlockLayout: FC<propsType> = ({ containerIndex, blockIndex, slotName, hidden = false }) => {
   const { state, dispatch } = useContext(SchemaContext)
   const containerRef = useRef<HTMLDivElement>(null)
   const element = getBlockElementByIndexes(state.schema, containerIndex, blockIndex)
@@ -101,7 +100,8 @@ const BlockLayout: FC<propsType> = (props) => {
   const resizeRight = isNumber(element?.position?.width)
   const resizeTop = isNumber(element?.position?.height)
   const resizeBottom = isNumber(element?.position?.height)
-  const resizeRightBottom = isNumber(element?.position?.width) && isNumber(element?.position?.height)
+  const resizeRightBottom =
+    isNumber(element?.position?.width) && isNumber(element?.position?.height)
   const newStyle = {
     ...element.props.style
   }
@@ -131,7 +131,7 @@ const BlockLayout: FC<propsType> = (props) => {
         })
       }}
       style={{
-        display: props.hidden ? 'none' : 'block',
+        display: hidden ? 'none' : 'block',
         ...element.position,
         position: element.props.style.position,
         marginLeft: element.props.style.marginLeft,
@@ -178,8 +178,5 @@ const BlockLayout: FC<propsType> = (props) => {
       </Resizer>
     </div>
   )
-}
-BlockLayout.defaultProps = {
-  hidden: false
 }
 export default BlockLayout

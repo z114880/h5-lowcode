@@ -8,8 +8,14 @@ type propsType = {
   bottom?: boolean
   slot?: string
 }
-const BlockBorder: FC<propsType> = (props) => {
-  const { isFocusing, left, right, top, bottom, slot } = props
+const BlockBorder: FC<propsType> = ({
+  isFocusing,
+  left = true,
+  top = true,
+  right = true,
+  bottom = true,
+  slot
+}) => {
   return (
     <>
       {right && (
@@ -50,13 +56,6 @@ const BlockBorder: FC<propsType> = (props) => {
       )}
     </>
   )
-}
-
-BlockBorder.defaultProps = {
-  left: true,
-  top: true,
-  right: true,
-  bottom: true
 }
 
 export default memo(BlockBorder)

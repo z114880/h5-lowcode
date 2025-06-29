@@ -13,7 +13,7 @@ type propsType = {
 
 const HeaderResizer: FC<propsType> = (props) => {
   const { state, dispatch } = useContext(SchemaContext)
-  const { blockIndex, containerIndex, children, isFocusing, isContainer } = props
+  const { blockIndex, containerIndex, children, isFocusing, isContainer = true } = props
   const { schema } = state
   const isMoving = useRef<boolean>(false)
   const upSchema = useRef({})
@@ -77,7 +77,5 @@ const HeaderResizer: FC<propsType> = (props) => {
     </>
   )
 }
-HeaderResizer.defaultProps = {
-  isContainer: true
-}
+
 export default HeaderResizer

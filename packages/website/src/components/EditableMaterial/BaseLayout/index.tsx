@@ -28,9 +28,18 @@ type propsType = {
 
 const MENU_ID = 'rightPannel'
 
-const BaseLayout: FC<propsType> = (props) => {
-  const { containerIndex, blockIndex, slotName, double, left, right, bottom, top, rightBottom } =
-    props
+const BaseLayout: FC<propsType> = ({
+  containerIndex,
+  blockIndex,
+  slotName,
+  double,
+  left,
+  right,
+  bottom,
+  top,
+  rightBottom,
+  hidden = false
+}) => {
   const { state, dispatch } = useContext(SchemaContext)
   const containerRef = useRef<HTMLDivElement>(null)
   const element = getBlockElementByIndexes(state.schema, containerIndex, blockIndex)
@@ -129,7 +138,7 @@ const BaseLayout: FC<propsType> = (props) => {
           }
         })
       }}
-      style={{ display: props.hidden ? 'none' : 'block' }}
+      style={{ display: hidden ? 'none' : 'block' }}
     >
       <ContainerBlockBorder isFocusing={isFocusing} />
       <Resizer
@@ -175,8 +184,5 @@ const BaseLayout: FC<propsType> = (props) => {
       </Resizer>
     </div>
   )
-}
-BaseLayout.defaultProps = {
-  hidden: false
 }
 export default BaseLayout

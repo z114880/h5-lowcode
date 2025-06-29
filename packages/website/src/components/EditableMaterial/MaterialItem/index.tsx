@@ -10,7 +10,7 @@ type propsType = {
   borderB?: boolean
 }
 const MaterialItem: FC<propsType> = (props) => {
-  const { label, name, icon, borderB } = props
+  const { label, name, icon, borderB = false } = props
   const { dispatch } = useContext(SchemaContext)
   const onDragStart = (name: string) => {
     return () => {
@@ -40,7 +40,5 @@ const MaterialItem: FC<propsType> = (props) => {
     </div>
   )
 }
-MaterialItem.defaultProps = {
-  borderB: false
-}
+
 export default memo(MaterialItem)

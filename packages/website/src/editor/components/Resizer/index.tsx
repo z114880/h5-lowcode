@@ -17,22 +17,21 @@ type propsType = {
   isContainer: boolean
 }
 
-const Resizer: FC<propsType> = (props) => {
+const Resizer: FC<propsType> = ({
+  children,
+  type,
+  blockIndex,
+  containerIndex,
+  right = true,
+  bottom = true,
+  left = true,
+  top = true,
+  rightBottom = true,
+  isFocusing,
+  double,
+  isContainer = false
+}) => {
   const { state, dispatch } = useContext(SchemaContext)
-  const {
-    type,
-    blockIndex,
-    containerIndex,
-    children,
-    right,
-    bottom,
-    left,
-    top,
-    rightBottom,
-    isFocusing,
-    double,
-    isContainer
-  } = props
   const { schema } = state
   const isMoving = useRef<boolean>(false)
   const upSchema = useRef({})
@@ -188,13 +187,5 @@ const Resizer: FC<propsType> = (props) => {
       )}
     </>
   )
-}
-Resizer.defaultProps = {
-  left: true,
-  right: true,
-  bottom: true,
-  top: true,
-  rightBottom: true,
-  isContainer: false
 }
 export default Resizer
