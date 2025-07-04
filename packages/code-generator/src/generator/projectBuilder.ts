@@ -104,7 +104,7 @@ export default class ProjectBuilder {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       <title>${this.options.config.title || ''}</title>
-      <link rel="icon" type="image/svg+xml" href="/funet.svg" />
+      <link rel="icon" href="/funet.png" />
       <link rel="stylesheet" href="./normalize.css">
       <link rel="stylesheet" href="./animation.css">
       <link rel="stylesheet" href="./index.css">
