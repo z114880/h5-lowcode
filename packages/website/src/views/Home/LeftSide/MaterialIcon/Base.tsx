@@ -8,7 +8,7 @@ const Base: FC = () => {
   const Holder = (borderB?: boolean, borderR?: boolean) => (
     <div
       className={classNames(
-        'flex-1 max-w-[100px] h-[120px] flex flex-col border-gray-200 flex justify-center items-center overflow-hidden',
+        'flex-1 max-w-[100px] h-[120px] flex flex-col border-gray-200 justify-center items-center overflow-hidden',
         borderB && 'border-b',
         borderR && 'border-r'
       )}
