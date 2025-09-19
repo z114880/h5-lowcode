@@ -1,41 +1,34 @@
-# Stage 1: Build the application
+# Stage 1: Build
 FROM node:18-alpine AS build
 
-# Install pnpm
+# 1) 安装 pnpm
 RUN npm install -g pnpm@10.12.1
 
-# Set working directory
 WORKDIR /app
 
-# Copy project manifest files for dependency installation
+# 2) 仅拷贝清单，最大化依赖层缓存命中
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-# Copy tsconfig for build process
 COPY tsconfig.json ./
-# Copy package.json from each workspace package to leverage Docker cache
 COPY packages/material/package.json ./packages/material/
 COPY packages/code-generator/package.json ./packages/code-generator/
 COPY packages/website/package.json ./packages/website/
 
-# Install dependencies using pnpm
-RUN pnpm install --frozen-lockfile
+# 3) 预取依赖（不需要源码即可缓存）
+RUN pnpm fetch
 
-# Copy the rest of the source code
+# 4) 拷贝源码
 COPY . .
 
-# Build the entire project
+# 5) 离线安装（利用上一步缓存），并可选 cache bust
+ARG CACHE_BUST=1
+RUN echo "cache bust: $CACHE_BUST" && pnpm install --offline --frozen-lockfile
+
+# 6) 构建
 RUN pnpm run build:website
 
-# Stage 2: Serve the application with Nginx
+# Stage 2: Serve
 FROM nginx:1.25-alpine
-
-# Copy built assets from the build stage
 COPY --from=build /app/lowcode-dist /opt/lowcode-dist
-
-# Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80 for the web server
 EXPOSE 80
-
-# Start Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"] 
+CMD ["nginx", "-g", "daemon off;"]
