@@ -22,7 +22,7 @@ const Base: FC = () => {
       </h2>
       <div className="flex flex-row flex-wrap">
         {registerConfig.componentMap['baseLayout'].icon()}
-        {registerConfig.componentMap['tabLayout'].icon()}
+        {/* {registerConfig.componentMap['tabLayout'].icon()} */}
         {registerConfig.componentMap['blockLayout'].icon()}
       </div>
       <h2 className="border-b border-r border-t border-gray-200 mb-0 text-center h-9 leading-9">
