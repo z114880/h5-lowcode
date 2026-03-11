@@ -18,7 +18,7 @@ const Login: FC = () => {
   return (
     <div className={styles['login-wrap']}>
       <div className={styles['login-view']}>
-        <p className={styles['title']}>Low-code Platform</p>
+        <p className={styles['title']}>Lowcode Platform</p>
         <p className="mb-2 text-center">username: admin &nbsp;&nbsp; password: 123456</p>
         <Form name="basic" className="w-[320px]" onFinish={onFinish} autoComplete="off">
           <Form.Item
